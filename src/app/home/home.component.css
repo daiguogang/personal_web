@@ -1,0 +1,65 @@
+.web-main{
+  height:100%;
+  position: relative;
+  z-index:20;
+  text-align: center;
+  padding-bottom: 8em;
+  background-color: #fbfbfb;
+  border-bottom: solid 1px #ddd;
+}
+.web-nav{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10
+}
+.web-home-nav{
+  position: fixed;
+  right: 20px;
+}
+
+.web-content-brand {
+  position: absolute;
+  width: 100%;
+  top: 200px;
+  min-height: 200px;
+}
+.scroll-down-div {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #4d4d4d;;
+  /*cursor: pointer;*/
+  height: 32px;
+  font-size: 18px;
+}
+
+.web-content{
+  height:90%;
+}
+
+.web-content-saying{
+  height: 60%;
+}
+
+.web-content-header{
+  width: 100%;
+  height: 30%;
+  padding-top: 7rem;
+}
+.web-content-content{
+  width: 100%;
+  height: 70%;
+}
+.web-content-h3{
+  text-align: center;
+}
+
+.web-footer{
+  height: 20%;
+}
+hr.divider {
+  color: #ededed;
+  border-top: 1px dashed #aaa;
+}
