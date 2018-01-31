@@ -22,6 +22,7 @@
 <div class="row web-main-content">
   <div class="col-lg-3 main-left">
     <div class="row main-left-daily bg-success">
+      <div>每日一句</div>
       <div class="daily-content">
         <span>
           生如夏花之绚烂，死如秋叶之静美.
@@ -34,19 +35,77 @@
       </div>
     </div>
     <div class="row main-left-date bg-primary">
-      日期插件
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker #picker></mat-datepicker>
+      <button mat-raised-button (click)="picker.open()">Open</button>
+
     </div>
     <div class="row main-left-rank bg-info">
-      浏览最多
+      <div>每日一句</div>
+      <div>
+        <ul class="list-unstyled">
+          <li><span>1</span><span>学而时习之</span></li>
+          <li><span>2</span><span>学而时习之</span></li>
+          <li><span>3</span><span>学而时习之</span></li>
+          <li><span>4</span><span>学而时习之</span></li>
+          <li><span>5</span><span>学而时习之</span></li>
+          <li><span>6</span><span>学而时习之</span></li>
+          <li><span>7</span><span>学而时习之</span></li>
+          <li><span>8</span><span>学而时习之</span></li>
+          <li><span>9</span><span>学而时习之</span></li>
+          <li><span>10</span><span>学而时习之</span></li>
+        </ul>
+      </div>
     </div>
-    <div class="row main-left-rank bg-dark">
-      点赞最多
-    </div>
-    <div class="row main-left-rank bg-warning">
-      评论最多
+    <div class="row main-left-rank bg-success">
+      <div>每日一句</div>
+      <div>
+        <ul class="list-unstyled">
+          <li><span>1</span><span>学而时习之</span></li>
+          <li><span>2</span><span>学而时习之</span></li>
+          <li><span>3</span><span>学而时习之</span></li>
+          <li><span>4</span><span>学而时习之</span></li>
+          <li><span>5</span><span>学而时习之</span></li>
+          <li><span>6</span><span>学而时习之</span></li>
+          <li><span>7</span><span>学而时习之</span></li>
+          <li><span>8</span><span>学而时习之</span></li>
+          <li><span>9</span><span>学而时习之</span></li>
+          <li><span>10</span><span>学而时习之</span></li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="col-lg-9 bg-primary bg-danger">
-    bbb
+
+  <div class="col-lg-9 main-right">
+    <div class="row main-right-head bg-info">
+      <span>当前位置:</span><span>博客列表</span>
+    </div>
+    <div class="row main-right-form bg-primary"></div>
+    <div class="row main-right-list bg-danger">
+      <div>
+        <ul class="list-unstyled">
+          <li>
+            <div class="li-content-head">这是一个标题</div>
+            <div class="li-content-main">这是一些内容，这是一些内容</div>
+            <div class="li-content-footer">角标</div>
+          </li>
+          <li>111</li>
+          <li>111</li>
+          <li>111</li>
+          <li>111</li>
+          <li>111</li>
+          <li>111</li>
+          <li>111</li>
+
+        </ul>
+        <div class="col-xs-12 col-12">
+          <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm"
+                      [boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event"></pagination>
+        </div>
+      </div>
+
+
+    </div>
   </div>
 </div>
+

@@ -2,6 +2,10 @@ import {NgModule} from "@angular/core";
 import {HomeComponent} from "./home.component";
 import {CommonModule} from "@angular/common";
 import {HomeMainComponent} from "./home-main.component";
+import {MatDatepickerModule} from "@angular/material";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import {PaginationConfig, PaginationModule} from "ngx-bootstrap";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations:[
@@ -10,9 +14,13 @@ import {HomeMainComponent} from "./home-main.component";
   ],
   imports:[
     // CommonModule
+    FormsModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    PaginationModule
   ],
   exports:[],
-  providers:[]
+  providers:[PaginationConfig]
 })
 
 export class HomeModule { }
