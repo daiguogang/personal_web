@@ -9,6 +9,8 @@ import {LoginModule} from "./login/login.module";
 import {AppRouting} from "./app.routing";
 import {UserCommonModule} from "./common/user-common.module";
 import {UserModule} from "./user/user.module";
+import {MarkdownModule, MarkedOptions} from "ngx-markdown";
+import {markedOptionsFactory} from "./common/markdown/marked-options-factory";
 
 @NgModule({
   declarations: [
@@ -16,8 +18,11 @@ import {UserModule} from "./user/user.module";
   ],
   imports: [
     BrowserModule,
-    // FormsModule,
-
+    FormsModule,
+    MarkdownModule.forRoot({
+      provide:MarkedOptions,
+      useFactory:markedOptionsFactory
+    }),
     UserCommonModule,
     HomeModule,
     AdminModule,

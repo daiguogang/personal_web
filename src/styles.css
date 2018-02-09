@@ -5,3 +5,37 @@ html,body{
 }
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~font-awesome/css/font-awesome.css";
+
+
+
+.block-quote {
+  /*color:#868e96;*/
+  background-color: #f8f9fa;
+  /*border-left: 10px solid #5236a0;*/
+  border-right: 2px solid #5236a0;
+  box-shadow: -1px 0px 0px 0px #5236a0, 0px 0px 0px 1px #dfdfdf;
+  padding: 1em 1.5em 1em 1.5em;
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 150%;
+  text-indent: 35px;
+}
+.block-quote:before {
+  color: #392570;
+  content: "\201C";
+  font-size: 3em;
+  position:absolute;
+  left:-15px;
+  top: 35px;
+  line-height: 0.1em;
+}
+.block-quote:after {
+  color: #392570;
+  content: "\201D";
+  font-size: 3em;
+  position:absolute;
+  right:15px;
+  bottom: 0em;
+  line-height: 0.1em;
+}
+
