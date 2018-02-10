@@ -7,8 +7,21 @@
     <div><a class="navbar-brand" href="/home">Logo</a></div>
   </div>
   <div class=" admin-content">
-    <div class="col-lg-3 bg-success"></div>
-    <div class="col-lg-9 bg-warning"></div>
+    <div class="admin-content-menu col-lg-2 bg-success">
+      <div>
+        <ul class="list-unstyled">
+          <li class="btn"><a routerLink="main">管理主页</a></li>
+          <li class="btn"><a routerLink="category">分类管理</a></li>
+          <li class="btn"><a routerLink="blog">博客管理</a></li>
+          <li class="btn"><a routerLink="saying">文字管理</a></li>
+          <li class="btn"><a routerLink="user">用户管理</a></li>
+          <li class="btn"><a routerLink="comment">评论管理</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="admin-content-main col-lg-10 bg-warning">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
 
