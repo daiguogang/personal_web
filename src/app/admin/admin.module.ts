@@ -8,6 +8,9 @@ import {AdminCategoryComponent} from "./admin-category.component";
 import {AdminSayingComponent} from "./admin-saying.component";
 import {AdminUserComponent} from "./admin-user.component";
 import {AdminCommentComponent} from "./admin-comment.component";
+import {AdminBookComponent} from "./admin-book.component";
+import {AdminArticleComponent} from "./admin-article.component";
+import {MyMaterialModule} from "../common/my-material.module";
 
 @NgModule({
   declarations:[
@@ -17,11 +20,14 @@ import {AdminCommentComponent} from "./admin-comment.component";
     AdminCategoryComponent,
     AdminSayingComponent,
     AdminUserComponent,
-    AdminCommentComponent
+    AdminCommentComponent,
+    AdminBookComponent,
+    AdminArticleComponent
   ],
   imports:[
     CommonModule,
-    RouterModule
+    RouterModule,
+    MyMaterialModule
   ],
   exports:[],
   providers:[]

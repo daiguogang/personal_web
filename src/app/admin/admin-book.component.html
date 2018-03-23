@@ -1,0 +1,65 @@
+
+
+<div>
+
+  <div class="tool-bar">
+    <div class="">
+      <a mat-icon-button color="accent" title="新增">
+        <mat-icon class="fa fa-plus icon-size1"></mat-icon>
+      </a>
+      <a mat-icon-button color="primary" title="编辑">
+        <mat-icon class="fa fa-edit icon-size1"></mat-icon>
+      </a>
+      <a mat-icon-button color="warn" title="删除">
+        <mat-icon class="fa fa-remove icon-size1"></mat-icon>
+      </a>
+    </div>
+  </div>
+  <hr class="divider" />
+  <div class="">
+    <div class="row">
+      <div class="col-lg-4">
+        <input/>
+      </div>
+      <div class="col-lg-4">
+        <input/>
+      </div>
+      <div class="col-lg-4">
+        <input/>
+      </div>
+    </div>
+  </div>
+  <hr class="divider" />
+  <div class="admin-content-list">
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>名称</th>
+            <th>介绍</th>
+            <th>类型</th>
+            <th>是否禁用</th>
+            <th>创建日期</th>
+            <th>操作</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>修改/删除</td>
+          </tr>
+        </tbody>
+      </table>
+      <mat-paginator [length]="100"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+    </div>
+  </div>
+
+</div>

@@ -12,6 +12,8 @@ import {AdminCategoryComponent} from "./admin/admin-category.component";
 import {AdminSayingComponent} from "./admin/admin-saying.component";
 import {AdminUserComponent} from "./admin/admin-user.component";
 import {AdminCommentComponent} from "./admin/admin-comment.component";
+import {AdminBookComponent} from "./admin/admin-book.component";
+import {AdminArticleComponent} from "./admin/admin-article.component";
 
 const routes:Routes = [
   {path:'home',component:HomeComponent},
@@ -24,7 +26,9 @@ const routes:Routes = [
     {path:'category',component:AdminCategoryComponent},
     {path:'saying',component:AdminSayingComponent},
     {path:'user',component:AdminUserComponent},
-    {path:'comment',component:AdminCommentComponent}
+    {path:'comment',component:AdminCommentComponent},
+    {path:'book',component:AdminBookComponent},
+    {path:'article',component:AdminArticleComponent}
 
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},

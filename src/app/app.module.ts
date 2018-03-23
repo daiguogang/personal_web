@@ -7,7 +7,7 @@ import {HomeModule} from "./home/home.module";
 import {AdminModule} from "./admin/admin.module";
 import {LoginModule} from "./login/login.module";
 import {AppRouting} from "./app.routing";
-import {UserCommonModule} from "./common/user-common.module";
+import {CustomCommonModule} from "./common/custom-common.module";
 import {UserModule} from "./user/user.module";
 import {MarkdownModule, MarkedOptions} from "ngx-markdown";
 import {markedOptionsFactory} from "./common/markdown/marked-options-factory";
@@ -23,7 +23,7 @@ import {markedOptionsFactory} from "./common/markdown/marked-options-factory";
       provide:MarkedOptions,
       useFactory:markedOptionsFactory
     }),
-    UserCommonModule,
+    CustomCommonModule,
     HomeModule,
     AdminModule,
     LoginModule,

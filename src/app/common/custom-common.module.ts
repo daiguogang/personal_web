@@ -10,4 +10,4 @@ import {PageNotFoundComponent} from "./page-not-found.component";
   providers:[]
 })
 
-export class UserCommonModule { }
+export class CustomCommonModule { }
