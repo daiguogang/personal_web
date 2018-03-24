@@ -11,6 +11,7 @@ import {AdminCommentComponent} from "./admin-comment.component";
 import {AdminBookComponent} from "./admin-book.component";
 import {AdminArticleComponent} from "./admin-article.component";
 import {MyMaterialModule} from "../common/my-material.module";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations:[
@@ -26,6 +27,7 @@ import {MyMaterialModule} from "../common/my-material.module";
   ],
   imports:[
     CommonModule,
+    FormsModule,
     RouterModule,
     MyMaterialModule
   ],

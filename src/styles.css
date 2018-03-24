@@ -39,3 +39,5 @@ html,body{
   line-height: 0.1em;
 }
 
+button:focus{outline:0;}
+

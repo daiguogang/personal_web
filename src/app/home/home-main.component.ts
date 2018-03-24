@@ -13,7 +13,7 @@ export class HomeMainComponent {
   bigCurrentPage: number = 1;
   numPages: number = 0;
 
-  pageChanged(event: any): void {
+  onPageChanged(event: any): void {
     console.log('Page changed to: ' + event.page);
     console.log('Number items per page: ' + event.itemsPerPage);
   }

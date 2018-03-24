@@ -101,8 +101,13 @@
 
         </ul>
         <div class="col-xs-12 col-12">
-          <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm"
-                      [boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event"></pagination>
+          <pagination [totalItems]="bigTotalItems"
+                      [(ngModel)]="bigCurrentPage"
+                      [maxSize]="maxSize" class="pagination"
+                      [boundaryLinks]="true"
+                      [rotate]="false"
+                      (pageChanged)="onPageChanged($event)">
+          </pagination>
         </div>
       </div>
 

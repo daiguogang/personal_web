@@ -11,6 +11,7 @@ import {CustomCommonModule} from "./common/custom-common.module";
 import {UserModule} from "./user/user.module";
 import {MarkdownModule, MarkedOptions} from "ngx-markdown";
 import {markedOptionsFactory} from "./common/markdown/marked-options-factory";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {markedOptionsFactory} from "./common/markdown/marked-options-factory";
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
     MarkdownModule.forRoot({
       provide:MarkedOptions,
       useFactory:markedOptionsFactory

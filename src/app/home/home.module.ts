@@ -6,6 +6,7 @@ import {MatDatepickerModule} from "@angular/material";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {PaginationConfig, PaginationModule} from "ngx-bootstrap";
 import {FormsModule} from "@angular/forms";
+import {CustomPaginationConfig} from "../common/ngx-bootstrap/custom-pagination.config";
 
 @NgModule({
   declarations:[
@@ -20,7 +21,7 @@ import {FormsModule} from "@angular/forms";
     PaginationModule
   ],
   exports:[],
-  providers:[PaginationConfig]
+  providers:[{provide:PaginationConfig,useClass:CustomPaginationConfig}]
 })
 
 export class HomeModule { }
