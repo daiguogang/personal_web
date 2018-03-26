@@ -19,21 +19,19 @@
   <div class="">
     <div class="row">
       <div class="col-lg-3">
-        <mat-form-field>
-          <input matInput type="text" placeholder="搜索关键字" [(ngModel)]="value"/>
-          <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
+        <div class="form-group">
+          <input class="">
+        </div>
       </div>
       <div class="col-lg-3">
-        <mat-form-field >
-          <input matInput [matDatepicker]="dateStart"
-                 placeholder="开始日期"
-                 class=" input-width">
-          <mat-datepicker-toggle matSuffix [for]="dateStart"></mat-datepicker-toggle>
-          <mat-datepicker #dateStart></mat-datepicker>
-        </mat-form-field>
+        <div class="form-group">
+          <input type="text"
+                 placeholder="开始时间"
+                 class="input-width"
+                 placement="bottom left"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD',containerClass:'theme-default',locale:'zh-cn' }"
+                 bsDatepicker>
+        </div>
       </div>
       <div class="col-lg-3">
         <div class="form-group form-inline">

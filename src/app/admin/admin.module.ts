@@ -12,6 +12,7 @@ import {AdminBookComponent} from "./admin-book.component";
 import {AdminArticleComponent} from "./admin-article.component";
 import {MyMaterialModule} from "../common/my-material.module";
 import {FormsModule} from "@angular/forms";
+import {BsDatepickerModule} from "ngx-bootstrap";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {FormsModule} from "@angular/forms";
     CommonModule,
     FormsModule,
     RouterModule,
-    MyMaterialModule
+    MyMaterialModule,
+    BsDatepickerModule.forRoot()
   ],
   exports:[],
   providers:[]
