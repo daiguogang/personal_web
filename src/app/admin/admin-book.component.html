@@ -18,15 +18,37 @@
   <hr class="divider" />
   <div class="">
     <div class="row">
-      <div class="col-lg-4">
-        <input/>
+      <div class="col-lg-3">
+        <mat-form-field>
+          <input matInput type="text" placeholder="搜索关键字" [(ngModel)]="value"/>
+          <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
       </div>
-      <div class="col-lg-4">
-        <input/>
+      <div class="col-lg-3">
+        <mat-form-field >
+          <input matInput [matDatepicker]="dateStart"
+                 placeholder="开始日期"
+                 class=" input-width">
+          <mat-datepicker-toggle matSuffix [for]="dateStart"></mat-datepicker-toggle>
+          <mat-datepicker #dateStart></mat-datepicker>
+        </mat-form-field>
       </div>
-      <div class="col-lg-4">
-        <input/>
+      <div class="col-lg-3">
+        <div class="form-group form-inline">
+          <input matInput [matDatepicker]="dateEnd"
+                 placeholder="结束日期"
+                 class="form-control input-width">
+          <mat-datepicker-toggle matSuffix [for]="dateEnd"></mat-datepicker-toggle>
+          <mat-datepicker #dateEnd></mat-datepicker>
+        </div>
       </div>
+      <div class="col-lg-3">
+        <button mat-raised-button>Basic</button>
+      </div>
+
+
     </div>
   </div>
   <hr class="divider" />
