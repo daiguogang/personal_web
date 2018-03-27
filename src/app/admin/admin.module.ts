@@ -14,10 +14,14 @@ import {MyMaterialModule} from "../common/my-material.module";
 import {FormsModule} from "@angular/forms";
 import {BsDatepickerModule, ModalModule} from "ngx-bootstrap";
 import {CallService} from "../common/service/call.service";
+import {TypeOptionPipe} from "./pipe/type-option.pipe";
+import {IsDisablePipe} from "./pipe/is-disable.pipe";
 
 
 @NgModule({
   declarations:[
+    TypeOptionPipe,
+    IsDisablePipe,
     AdminComponent,
     AdminMainComponent,
     AdminBlogComponent,
