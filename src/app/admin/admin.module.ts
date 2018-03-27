@@ -12,7 +12,8 @@ import {AdminBookComponent} from "./admin-book.component";
 import {AdminArticleComponent} from "./admin-article.component";
 import {MyMaterialModule} from "../common/my-material.module";
 import {FormsModule} from "@angular/forms";
-import {BsDatepickerModule} from "ngx-bootstrap";
+import {BsDatepickerModule, ModalModule} from "ngx-bootstrap";
+import {CallService} from "../common/service/call.service";
 
 
 @NgModule({
@@ -32,10 +33,11 @@ import {BsDatepickerModule} from "ngx-bootstrap";
     FormsModule,
     RouterModule,
     MyMaterialModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    ModalModule.forRoot()
   ],
   exports:[],
-  providers:[]
+  providers:[CallService]
 })
 
 export class AdminModule {}
