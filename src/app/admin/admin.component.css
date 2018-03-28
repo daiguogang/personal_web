@@ -42,3 +42,44 @@
   padding: 0px;
 }
 
+.tool-bar{
+  height: 3em;
+}
+.query-form{
+  height:4em;
+  margin-top: 1em;
+}
+hr{
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.table td{
+  padding: .2rem 0;
+  height: 3em;
+  vertical-align: middle;
+  border-bottom: 1px solid #dee2e6;
+}
+.table th{
+  padding-left: 0;
+}
+.table{
+  margin-bottom: 0;
+}
+.custom-table-height{
+  display: block;
+  overflow: hidden;
+  height: 35em;
+}
+.mat-icon-button {
+  padding: 0;
+  min-width: 0;
+  width: 2em;
+  height: 2em;
+  flex-shrink: 0;
+  line-height: 2em;
+  border-radius: 50%;
+}
+

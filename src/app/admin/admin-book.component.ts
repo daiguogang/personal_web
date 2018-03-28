@@ -14,9 +14,9 @@ defineLocale('zh-cn', zhCn);
 })
 export class AdminBookComponent implements OnInit {
   // MatPaginator Inputs
-  length = 100;
-  pageSize = 15;
-  pageSizeOptions = [5, 10, 15];
+  pageTotal:number;
+  pageSize = 10;
+  pageSizeOptions = [5, 10];
   // MatPaginator Output
   // pageEvent: PageEvent;
   pageNumber: number;
@@ -66,6 +66,7 @@ export class AdminBookComponent implements OnInit {
         "pageSize": this.pageSize
       },
       (val) => {
+      this.pageTotal = val.data.total;
       this.bookList = val.data.records;
       });
   }
