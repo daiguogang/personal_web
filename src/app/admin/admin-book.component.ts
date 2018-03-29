@@ -46,6 +46,10 @@ export class AdminBookComponent implements OnInit {
 
   bookList: any;
 
+  keyWord:string;
+  timeStart:Date;
+  timeEnd:Date;
+
   constructor(private modalService: BsModalService,
               private call: CallService) {
   }
@@ -63,7 +67,10 @@ export class AdminBookComponent implements OnInit {
     this.call.callService("/book/page",
       {
         "currentPage": this.pageNumber,
-        "pageSize": this.pageSize
+        "pageSize": this.pageSize,
+        "keyWord":this.keyWord,
+        "timeStart":this.timeStart,
+        "timeEnd":this.timeEnd
       },
       (val) => {
       this.pageTotal = val.data.total;
@@ -144,6 +151,18 @@ export class AdminBookComponent implements OnInit {
     this.type = item.type;
     this.onOpenAddModal(template);
 
+  }
+
+  onTimeStartChange(value:Date):void {
+    this.timeStart = value;
+  }
+  onTimeEndChange(value:Date):void {
+    this.timeEnd = value;
+  }
+
+  onQueryList() {
+    this.pageNumber = 1;
+    this.queryBookList();
   }
 
 
