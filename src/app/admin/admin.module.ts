@@ -9,19 +9,22 @@ import {AdminSayingComponent} from "./admin-saying.component";
 import {AdminUserComponent} from "./admin-user.component";
 import {AdminCommentComponent} from "./admin-comment.component";
 import {AdminBookComponent} from "./admin-book.component";
-import {AdminArticleComponent} from "./admin-article.component";
+import {AdminBookArticleComponent} from "./admin-book-article.component";
 import {MyMaterialModule} from "../common/my-material.module";
 import {FormsModule} from "@angular/forms";
 import {BsDatepickerModule, ModalModule} from "ngx-bootstrap";
 import {CallService} from "../common/service/call.service";
 import {TypeOptionPipe} from "./pipe/type-option.pipe";
 import {IsDisablePipe} from "./pipe/is-disable.pipe";
+import {StatusPipe} from "./pipe/status.pipe";
+import {MarkdownModule} from "ngx-markdown";
 
 
 @NgModule({
   declarations:[
     TypeOptionPipe,
     IsDisablePipe,
+    StatusPipe,
     AdminComponent,
     AdminMainComponent,
     AdminBlogComponent,
@@ -30,7 +33,7 @@ import {IsDisablePipe} from "./pipe/is-disable.pipe";
     AdminUserComponent,
     AdminCommentComponent,
     AdminBookComponent,
-    AdminArticleComponent
+    AdminBookArticleComponent
   ],
   imports:[
     CommonModule,
@@ -38,7 +41,8 @@ import {IsDisablePipe} from "./pipe/is-disable.pipe";
     RouterModule,
     MyMaterialModule,
     BsDatepickerModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MarkdownModule.forChild()
   ],
   exports:[],
   providers:[CallService]

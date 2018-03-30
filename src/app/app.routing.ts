@@ -13,7 +13,7 @@ import {AdminSayingComponent} from "./admin/admin-saying.component";
 import {AdminUserComponent} from "./admin/admin-user.component";
 import {AdminCommentComponent} from "./admin/admin-comment.component";
 import {AdminBookComponent} from "./admin/admin-book.component";
-import {AdminArticleComponent} from "./admin/admin-article.component";
+import {AdminBookArticleComponent} from "./admin/admin-book-article.component";
 
 const routes:Routes = [
   {path:'home',component:HomeComponent},
@@ -28,7 +28,7 @@ const routes:Routes = [
     {path:'user',component:AdminUserComponent},
     {path:'comment',component:AdminCommentComponent},
     {path:'book',component:AdminBookComponent},
-    {path:'article',component:AdminArticleComponent}
+    {path:'article',component:AdminBookArticleComponent}
 
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},

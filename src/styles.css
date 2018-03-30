@@ -56,7 +56,7 @@ input, textarea, select ,select.select-control{
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 0.25rem;
-  margin: 3px 0;
+  margin: 0;
 }
 /* 获得焦点时的输入框高光效果 */
 input:focus,
@@ -127,5 +127,6 @@ input,select.form-control{
 }
 textarea{
   padding-left: 0.7em !important;
+  resize: none;
 }
 
