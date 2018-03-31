@@ -26,24 +26,41 @@ export class AdminBookArticleComponent implements OnInit {
   timeEnd:Date;
 
   contentId:number;
-  bookId:number;
+  bookId:any = "";
   contentTitle:string;
   contentTxt:string;
-  status:number;
+  status:any = "";
 
   articleList:any;
+
+  bookOption:any;
+  statusOption:any;
 
   constructor(private modalService: BsModalService,
               private call: CallService) {
   }
 
   ngOnInit() {
-
+    this.pageNumber = 1;
+    this.initOption();
+    this.queryArticleList();
 
   }
 
+  initOption() {
+    this.statusOption = [
+      {"id":0,"name":"草稿"},
+      {"id":1,"name":"正常发布"},
+      {"id":2,"name":"回收站"}
+    ];
+    this.call.callService("/book/list",{},
+      (val) => {
+      this.bookOption = val.data;
+      });
+  }
 
   onOpenAddModal(template: TemplateRef<any>) {
+    this.cleanQueryForm();
     this.modalRef = this.modalService.show(template, this.config);
   }
 
@@ -70,10 +87,14 @@ export class AdminBookArticleComponent implements OnInit {
         "contentTxt": this.contentTxt,
         "status": this.status
       },
-      (val) => {
+      () => {
 
         // 清空表单数据
-
+        this.contentId = undefined;
+        this.bookId = "";
+        this.contentTitle = "";
+        this.contentTxt = "";
+        this.status = "";
 
         // 返回list
         this.queryArticleList();
@@ -84,6 +105,11 @@ export class AdminBookArticleComponent implements OnInit {
   onDecline(): void {
     this.modalRef.hide();
     // 清空表单数据
+    this.contentId = undefined;
+    this.bookId = "";
+    this.contentTitle = "";
+    this.contentTxt = "";
+    this.status = "";
 
   }
 
@@ -105,6 +131,27 @@ export class AdminBookArticleComponent implements OnInit {
   }
 
   queryArticleList() {
+    this.call.callService("/bookContent/page",
+      {
+        "currentPage": this.pageNumber,
+        "pageSize": this.pageSize,
+        "keyWord":this.keyWord,
+        "timeStart":this.timeStart,
+        "timeEnd":this.timeEnd
+      },
+      (val) => {
+        this.pageTotal = val.data.total;
+        this.articleList = val.data.records;
+      });
+  }
+  onQueryList() {
+    this.pageNumber = 1;
+    this.queryArticleList();
+  }
 
+  cleanQueryForm() {
+    this.keyWord = '';
+    this.timeStart = null;
+    this.timeEnd = null;
   }
 }

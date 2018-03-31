@@ -84,7 +84,7 @@ hr{
 }
 
 .modal-custom-content{
-  height: 50em;
+  height: 52em;
 }
 
 .modal-custom-header{
@@ -111,4 +111,19 @@ hr{
   overflow-x: hidden;
   overflow-y: visible;
 }
+.custom-alert{
+  padding: 0.5em 0.7em;
+}
+.custom-alert2{
+  margin-top: 1em;
+  margin-bottom: 0;
+  margin-left: 6.5em;
+}
 
+.ng-valid[required], .ng-valid.required  {
+  border-left: 2px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 2px solid #a94442; /* red */
+}

@@ -79,6 +79,7 @@ export class AdminBookComponent implements OnInit {
   }
 
   onOpenAddModal(template: TemplateRef<any>) {
+    this.cleanQueryForm();
     this.modalRef = this.modalService.show(template, this.config);
   }
 
@@ -163,6 +164,12 @@ export class AdminBookComponent implements OnInit {
   onQueryList() {
     this.pageNumber = 1;
     this.queryBookList();
+  }
+
+  cleanQueryForm() {
+    this.keyWord = '';
+    this.timeStart = null;
+    this.timeEnd = null;
   }
 
 

@@ -99,34 +99,49 @@
         </button>
       </div>
       <div class="modal-body">
-        <div>
+        <form #contentForm="ngForm">
           <div class="row">
             <div class="col-lg-6">
               <div class="form-group form-inline">
-                <!--<label class="col-lg-2">标题</label>-->
                 <input class="col-lg-12"
                        placeholder="请输入标题"
-                       type="text" [(ngModel)]="contentTitle">
+                       name="contentTitle"
+                       required
+                       type="text" [(ngModel)]="contentTitle" #content_title="ngModel">
+              </div>
+              <div *ngIf="content_title.invalid && (content_title.dirty || content_title.touched)"
+                   class="alert alert-danger custom-alert">
+                <div *ngIf="content_title.errors.required">文章标题是必填项</div>
               </div>
             </div>
             <div class="col-lg-3">
               <div class="form-group form-inline">
-                <!--<label class="">类型</label>-->
-                <select class="col-lg-12 form-control select-control "
-                        [(ngModel)]="type">
-                  <option>-请选择系列和教程-</option>
-                  <option *ngFor="let item of typeOption" [value]="item.id">{{item.name}}</option>
+                <select class="col-lg-12 form-control select-control"
+                        name="bookId"
+                        required
+                        [(ngModel)]="bookId" #book_id="ngModel">
+                  <option value="">-请选择系列和教程-</option>
+                  <option *ngFor="let item of bookOption" [value]="item.bookId">{{item.bookName}}</option>
                 </select>
+              </div>
+              <div *ngIf="book_id.invalid && (book_id.dirty || book_id.touched)"
+                   class="alert alert-danger custom-alert">
+                <div *ngIf="book_id.errors.required">必须选择一个系列</div>
               </div>
             </div>
             <div class="col-lg-3">
               <div class="form-group form-inline">
-                <!--<label class="col-lg-2">状态</label>-->
-                <select class="col-lg-12 form-control select-control "
-                        [(ngModel)]="isDisabled">
-                  <option>-请选择状态-</option>
-                  <option *ngFor="let item of disableOption" [value]="item.id">{{item.name}}</option>
+                <select class="col-lg-12 form-control select-control"
+                        name="bookStatus"
+                        required
+                        [(ngModel)]="status" #book_status="ngModel">
+                  <option value="">-请选择状态-</option>
+                  <option *ngFor="let item of statusOption" [value]="item.id">{{item.name}}</option>
                 </select>
+              </div>
+              <div *ngIf="book_status.invalid && (book_status.dirty || book_status.touched)"
+                   class="alert alert-danger custom-alert">
+                <div *ngIf="book_status.errors.required">必须标记一个状态</div>
               </div>
             </div>
           </div>
@@ -137,6 +152,7 @@
             <div class="modal-custom-height col-lg-12">
               <div class="pull-left col-lg-6 modal-custom-body pl-0">
                 <textarea class=" custom-textArea"
+                          name="contentTxt"
                           placeholder="请输入正文，请使用markdown语法"
                           [(ngModel)] = "contentTxt">
                 </textarea>
@@ -151,7 +167,9 @@
           </div>
 
           <div class="row">
-            <button mat-raised-button color="primary" (click)="onConfirm()">
+            <button mat-raised-button color="primary"
+                    [disabled]="!contentForm.form.valid"
+                    (click)="onConfirm()">
               <i class="fa fa-save"></i><span>提交</span>
             </button>
             <button mat-raised-button color="primary" (click)="onDecline()">
@@ -159,7 +177,7 @@
             </button>
           </div>
 
-        </div>
+        </form>
 
       </div>
     </div>
