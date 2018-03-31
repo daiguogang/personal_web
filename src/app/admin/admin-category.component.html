@@ -1,10 +1,164 @@
 
+
+
 <div>
 
-  <div class="tool-bar bg-success">
-    工具条，增删改---分类页
+  <div class="tool-bar">
+    <div class="">
+      <button mat-icon-button matTooltip="新增" color="accent"
+              (click)="onOpenAddModal(template)">
+        <mat-icon class="fa fa-plus icon-size1"></mat-icon>
+      </button>
+    </div>
   </div>
-  <div class="bg-dark">查询条件区域</div>
-  <div class="admin-content-list bg-info">列表显示区域</div>
+  <hr/>
+  <div class="query-form">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="form-group">
+          <input type="text"
+                 placeholder="名称关键字"
+                 [(ngModel)]="keyWord"
+                 class="input-width">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <input type="text"
+                 placeholder="开始时间"
+                 class="input-width"
+                 placement="bottom left"
+                 [bsValue]="timeStart"
+                 (bsValueChange)="onTimeStartChange($event)"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD HH:mm:ss',containerClass:'theme-default',locale:'zh-cn' }"
+                 bsDatepicker>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <input type="text"
+                 placeholder="结束时间"
+                 class="input-width"
+                 placement="bottom left"
+                 [bsValue]="timeEnd"
+                 (bsValueChange)="onTimeEndChange($event)"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD HH:mm:ss',containerClass:'theme-default',locale:'zh-cn' }"
+                 bsDatepicker>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <button mat-raised-button color="primary" (click)="onQueryList()"><i class="fa fa-search"></i><span>查询</span></button>
+      </div>
+
+
+    </div>
+  </div>
+  <hr/>
+  <div class="admin-content-list">
+    <div  class="custom-table-height">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>名称</th>
+          <th>描述</th>
+          <th>类型</th>
+          <th>创建日期</th>
+          <th>是否禁用</th>
+          <th>操作</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of categoryList">
+          <td>{{item.categoryName}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.type | typeOption}}</td>
+          <td>{{item.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
+          <td><mat-slide-toggle checked="{{item.isDisabled | isDisable}}" (change)="onDisableChange($event,item)">禁用</mat-slide-toggle></td>
+          <td>
+            <button mat-icon-button matTooltip="编辑"
+                    color="primary"
+                    (click)="onClickEdit(item,template)">
+              <mat-icon class="fa fa-edit icon-size1"></mat-icon>
+            </button>
+            <!--
+            <button mat-icon-button matTooltip="删除"
+                    color="warn"
+                    (click)="onClickDelete(item)">
+              <mat-icon class="fa fa-remove icon-size1"></mat-icon>
+            </button>
+            -->
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <mat-paginator [length]="pageTotal"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
 
 </div>
+
+
+<ng-template #template>
+  <div class="">
+    <div class="modal-header">
+      <h5 class="modal-title pull-left">新增或修改</h5>
+      <button mat-icon-button class="pull-right" (click)="onDecline()" color="accent">
+        <span><i class="fa fa-close"></i></span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="form-group form-inline">
+          <label class="col-lg-2">名称</label>
+          <input class="col-lg-10" type="text"
+                 required
+                 [(ngModel)]="categoryName" #category_name="ngModel">
+
+          <div *ngIf="category_name.invalid && (category_name.dirty || category_name.touched)"
+               class="alert alert-danger col-lg-10 custom-alert custom-alert2">
+            <div *ngIf="category_name.errors.required">文章标题是必填项</div>
+          </div>
+        </div>
+
+        <div class="form-group form-inline">
+          <label class="col-lg-2">类型</label>
+          <select class="col-lg-10 form-control select-control "
+                  [(ngModel)]="type">
+            <option *ngFor="let item of typeOption" [value]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="form-group form-inline">
+          <label class="col-lg-2">禁用</label>
+          <select class="col-lg-10 form-control select-control "
+                  [(ngModel)]="isDisabled">
+            <option *ngFor="let item of disableOption" [value]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="form-group form-inline">
+          <label class="col-lg-2">描述</label>
+          <textarea class="col-lg-10" rows="3"
+                    [(ngModel)]="description">
+        </textarea>
+        </div>
+
+      </div>
+
+      <div class="">
+        <button mat-raised-button color="primary"
+                [disabled]="!category_name.valid"
+                (click)="onConfirm()">
+          <i class="fa fa-save"></i><span>提交</span>
+        </button>
+        <button mat-raised-button color="primary" (click)="onDecline()">
+          <i class="fa fa-close"></i><span>取消</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

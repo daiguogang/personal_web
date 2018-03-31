@@ -27,8 +27,9 @@
                  placeholder="开始时间"
                  class="input-width"
                  placement="bottom left"
+                 [bsValue]="timeStart"
                  (bsValueChange)="onTimeStartChange($event)"
-                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD',containerClass:'theme-default',locale:'zh-cn' }"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD HH:mm:ss',containerClass:'theme-default',locale:'zh-cn' }"
                  bsDatepicker>
         </div>
       </div>
@@ -38,8 +39,9 @@
                  placeholder="结束时间"
                  class="input-width"
                  placement="bottom left"
+                 [bsValue]="timeEnd"
                  (bsValueChange)="onTimeEndChange($event)"
-                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD',containerClass:'theme-default',locale:'zh-cn' }"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD HH:mm:ss',containerClass:'theme-default',locale:'zh-cn' }"
                  bsDatepicker>
         </div>
       </div>
