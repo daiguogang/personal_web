@@ -34,7 +34,7 @@ export class AdminContentComponent implements OnInit {
 
   type:number;
 
-  blogList:any;
+  contentList:any;
 
   categoryOption:any = [];
   statusOption:any = [];
@@ -50,7 +50,7 @@ export class AdminContentComponent implements OnInit {
     this.isBlog = 0;// 是否是博客1是，0否，默认0,内容管理页均为0
     this.pageNumber = 1;
     this.initOption();
-    this.queryBlogList();
+    this.queryContentList();
 
   }
 
@@ -112,7 +112,7 @@ export class AdminContentComponent implements OnInit {
         this.cleanForm();
 
         // 返回list
-        this.queryBlogList();
+        this.queryContentList();
 
       });
   }
@@ -128,7 +128,7 @@ export class AdminContentComponent implements OnInit {
   onPageChange(pageEvent) {
     this.pageNumber = pageEvent.pageIndex + 1;
     this.pageSize = pageEvent.pageSize;
-    this.queryBlogList();
+    this.queryContentList();
   }
 
   onClickEdit(item,template) {
@@ -142,7 +142,7 @@ export class AdminContentComponent implements OnInit {
 
   }
 
-  queryBlogList() {
+  queryContentList() {
     this.call.callService("/content/page",
       {
         "currentPage": this.pageNumber,
@@ -155,12 +155,12 @@ export class AdminContentComponent implements OnInit {
       },
       (val) => {
         this.pageTotal = val.data.total;
-        this.blogList = val.data.records;
+        this.contentList = val.data.records;
       });
   }
   onQueryList() {
     this.pageNumber = 1;
-    this.queryBlogList();
+    this.queryContentList();
   }
 
   cleanQueryForm() {

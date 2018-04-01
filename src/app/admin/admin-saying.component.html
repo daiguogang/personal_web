@@ -3,11 +3,221 @@
 
 <div>
 
-  <div class="tool-bar bg-success">
-    工具条，增删改---文字列表页
+  <div class="tool-bar">
+    <div class="">
+      <button mat-icon-button matTooltip="新增" color="accent"
+              (click)="onOpenAddModal(template)">
+        <mat-icon class="fa fa-plus icon-size1"></mat-icon>
+      </button>
+    </div>
   </div>
-  <div class="bg-dark">查询条件区域</div>
-  <div class="admin-content-list bg-info">列表显示区域</div>
+  <hr/>
+  <div class="query-form">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="form-group">
+          <input type="text"
+                 placeholder="名称关键字"
+                 [(ngModel)]="keyWord"
+                 class="input-width">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <input type="text"
+                 placeholder="开始时间"
+                 class="input-width"
+                 placement="bottom left"
+                 [bsValue]="timeStart"
+                 (bsValueChange)="onTimeStartChange($event)"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD HH:mm:ss',containerClass:'theme-default',locale:'zh-cn' }"
+                 bsDatepicker>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <input type="text"
+                 placeholder="结束时间"
+                 class="input-width"
+                 placement="bottom left"
+                 [bsValue]="timeEnd"
+                 (bsValueChange)="onTimeEndChange($event)"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD HH:mm:ss',containerClass:'theme-default',locale:'zh-cn' }"
+                 bsDatepicker>
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
+
+
+
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="form-group">
+          <select class="input-width form-control select-control "
+                  [(ngModel)]="isPoemQuery">
+            <option value="">-是否是诗词-</option>
+            <option *ngFor="let item of disableOption" [value]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <select class="input-width form-control select-control "
+                  [(ngModel)]="isAlienQuery">
+            <option value="">-是否是外文-</option>
+            <option *ngFor="let item of disableOption" [value]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <select class="input-width form-control select-control "
+                  [(ngModel)]="isDisableQuery">
+            <option value="">-是否禁用-</option>
+            <option *ngFor="let item of disableOption" [value]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <button mat-raised-button color="primary" (click)="onQueryList()"><i class="fa fa-search"></i><span>查询</span></button>
+      </div>
+
+    </div>
+  </div>
+  <hr/>
+  <div class="admin-content-list">
+    <div  class="custom-table-height">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>内容</th>
+          <th>作者</th>
+          <th>时间</th>
+          <th>诗词</th>
+          <th>外文</th>
+          <th>禁用</th>
+          <th>操作</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of sayingList">
+          <td>{{item.content}}</td>
+          <td>{{item.originAuthor}}</td>
+          <td>{{item.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
+          <td><mat-slide-toggle checked="{{item.isPoem | isDisable}}" (change)="onPoemChange($event,item)"></mat-slide-toggle></td>
+          <td><mat-slide-toggle checked="{{item.isAlien | isDisable}}" (change)="onAlienChange($event,item)"></mat-slide-toggle></td>
+          <td><mat-slide-toggle checked="{{item.isDisabled | isDisable}}" (change)="onDisableChange($event,item)"></mat-slide-toggle></td>
+          <td>
+            <button mat-icon-button matTooltip="编辑"
+                    color="primary"
+                    (click)="onClickEdit(item,template)">
+              <mat-icon class="fa fa-edit icon-size1"></mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="删除"
+                    color="warn"
+                    (click)="onClickDelete(delete_template,item)">
+              <mat-icon class="fa fa-remove icon-size1"></mat-icon>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <mat-paginator [length]="pageTotal"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
 
 </div>
+
+
+<ng-template #template>
+  <div class="">
+    <div class="modal-header">
+      <h5 class="modal-title pull-left">新增或修改</h5>
+      <button mat-icon-button class="pull-right" (click)="onDecline()" color="accent">
+        <span><i class="fa fa-close"></i></span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #sayingForm="ngForm">
+        <div class="form-group form-inline">
+          <label class="col-lg-2">内容</label>
+          <textarea class="col-lg-10" rows="4"
+                    name="content"
+                    required
+                    [(ngModel)]="content" #saying_content="ngModel">
+        </textarea>
+          <div *ngIf="saying_content.invalid && (saying_content.dirty || saying_content.touched)"
+               class="alert alert-danger col-lg-10 custom-alert custom-alert2">
+            <div *ngIf="saying_content.errors.required">内容是必填项</div>
+          </div>
+        </div>
+
+        <div class="form-group form-inline">
+          <label class="col-lg-2">作者</label>
+          <input class="col-lg-10" type="text"
+                 name="originAuthor"
+                 required
+                 [(ngModel)]="originAuthor" #origin_author="ngModel">
+
+          <div *ngIf="origin_author.invalid && (origin_author.dirty || origin_author.touched)"
+               class="alert alert-danger col-lg-10 custom-alert custom-alert2">
+            <div *ngIf="origin_author.errors.required">作者是必填项</div>
+          </div>
+        </div>
+
+        <div class="form-group form-inline">
+          <label class="col-lg-2">诗词</label>
+          <select class="col-lg-10 form-control select-control "
+                  name="isPoem"
+                  [(ngModel)]="isPoem">
+            <option *ngFor="let item of disableOption" [value]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="form-group form-inline">
+          <label class="col-lg-2">外文</label>
+          <select class="col-lg-10 form-control select-control "
+                  name="isAlien"
+                  [(ngModel)]="isAlien">
+            <option *ngFor="let item of disableOption" [value]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="form-group form-inline">
+          <label class="col-lg-2">禁用</label>
+          <select class="col-lg-10 form-control select-control "
+                  name="isDisabled"
+                  [(ngModel)]="isDisabled">
+            <option *ngFor="let item of disableOption" [value]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+
+
+      </form>
+
+      <div class="">
+        <button mat-raised-button color="primary"
+                [disabled]="!sayingForm.form.valid"
+                (click)="onConfirm()">
+          <i class="fa fa-save"></i><span>提交</span>
+        </button>
+        <button mat-raised-button color="primary" (click)="onDecline()">
+          <i class="fa fa-close"></i><span>取消</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #delete_template>
+  <div class="modal-body text-center">
+    <p>你确定要删除吗?</p>
+    <button mat-raised-button color=""  (click)="onDeleteConfirm()" >是</button>
+    <button mat-raised-button color="primary" (click)="onDeleteDecline()" >否</button>
+  </div>
+</ng-template>
 
