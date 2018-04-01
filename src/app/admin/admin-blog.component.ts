@@ -34,15 +34,17 @@ export class AdminBlogComponent implements OnInit {
 
   blogList:any;
 
-  categoryOption:any;
-  statusOption:any;
+  categoryOption:any = [];
+  statusOption:any = [];
+
+  categoryIdQuery:any = "";
 
   constructor(private modalService: BsModalService,
               private call: CallService) {
   }
 
   ngOnInit() {
-    this.type = 0; // 博客需要的分类都是 技术类
+    this.type = 1; // 博客需要的分类都是 技术类
     this.pageNumber = 1;
     this.initOption();
     this.queryBlogList();
@@ -57,18 +59,18 @@ export class AdminBlogComponent implements OnInit {
     ];
     this.call.callService("/category/list",{"type":this.type},
       (val) => {
-        this.categoryOption = val.data;
+        const tempData = val.data;
+        tempData.forEach((item) => {
+          const ext = item.isDisabled === 0 ? "[正常]" : "[禁用]";
+          item.categoryName = ext + item.categoryName;
+        });
+        this.categoryOption = tempData;
       });
   }
 
   getCategoryName(value:number):string {
-    let name = "";
-    this.categoryOption.forEach((item) => {
-      if(item.categoryId === value) {
-        name = item.categoryName;
-      }
-    });
-    return name;
+    const tempItem = this.categoryOption.find((item => item.categoryId === value));
+    return tempItem.categoryName;
   }
 
   onOpenAddModal(template: TemplateRef<any>) {
@@ -143,7 +145,8 @@ export class AdminBlogComponent implements OnInit {
         "pageSize": this.pageSize,
         "keyWord":this.keyWord,
         "timeStart":this.timeStart,
-        "timeEnd":this.timeEnd
+        "timeEnd":this.timeEnd,
+        "categoryId":this.categoryIdQuery
       },
       (val) => {
         this.pageTotal = val.data.total;
@@ -159,6 +162,7 @@ export class AdminBlogComponent implements OnInit {
     this.keyWord = '';
     this.timeStart = null;
     this.timeEnd = null;
+    this.categoryIdQuery = "";
   }
 
   cleanForm() {

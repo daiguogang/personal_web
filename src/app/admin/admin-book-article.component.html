@@ -13,19 +13,29 @@
   <hr/>
   <div class="query-form">
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <div class="form-group">
           <input type="text"
                  placeholder="标题关键字"
                  [(ngModel)]="keyWord"
-                 class="input-width">
+                 class="">
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2">
+        <div class="form-group">
+          <select class="form-control select-control"
+                  name="bookId"
+                  [(ngModel)]="bookIdQuery">
+            <option value="">-请选择系列和教程-</option>
+            <option *ngFor="let item of bookOption" [value]="item.bookId">{{item.bookName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-2">
         <div class="form-group">
           <input type="text"
                  placeholder="开始时间"
-                 class="input-width"
+                 class=""
                  placement="bottom left"
                  [bsValue]="timeStart"
                  (bsValueChange)="onTimeStartChange($event)"
@@ -33,11 +43,11 @@
                  bsDatepicker>
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <div class="form-group">
           <input type="text"
                  placeholder="结束时间"
-                 class="input-width"
+                 class=""
                  placement="bottom left"
                  [bsValue]="timeEnd"
                  (bsValueChange)="onTimeEndChange($event)"
@@ -45,10 +55,12 @@
                  bsDatepicker>
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2">
         <button mat-raised-button color="primary" (click)="onQueryList()"><i class="fa fa-search"></i><span>查询</span></button>
       </div>
-
+    </div>
+    <div class="row">
 
     </div>
   </div>
@@ -59,6 +71,7 @@
         <thead>
         <tr>
           <th>标题</th>
+          <th>所属教程</th>
           <th>创建日期</th>
           <th>状态</th>
           <th>操作</th>
@@ -68,6 +81,7 @@
         <tbody>
         <tr *ngFor="let item of articleList;">
           <td>{{item.contentTitle}}</td>
+          <td>{{getBookName(item.bookId)}}</td>
           <td>{{item.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
           <td>{{item.status | statusPipe}}</td>
           <td>

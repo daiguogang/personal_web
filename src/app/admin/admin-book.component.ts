@@ -28,11 +28,7 @@ export class AdminBookComponent implements OnInit {
     class: 'modal-dialog-centered'
   };
 
-  typeOption = [
-    {"id":0,"name":"技术教程类"},
-    {"id":1,"name":"中文散文随笔类"},
-    {"id":2,"name":"英文文学演讲类"}
-    ];
+  typeOption:any = [];
   disableOption = [
     {"id":0,"name":"否"},
     {"id":1,"name":"是"}
@@ -40,7 +36,7 @@ export class AdminBookComponent implements OnInit {
 
   bookId:number;
   bookName: string;
-  type: number;
+  type:any = "";
   isDisabled: number;
   bookInfo: string;
 
@@ -49,18 +45,32 @@ export class AdminBookComponent implements OnInit {
   keyWord:string;
   timeStart:Date;
   timeEnd:Date;
+  typeQuery:any = "";
 
   constructor(private modalService: BsModalService,
               private call: CallService) {
   }
 
   ngOnInit() {
-    this.type = 0;
+    this.initTypeOption();
     this.isDisabled = 0;
     this.pageNumber = 1;
 
 
+
     this.queryBookList();
+  }
+
+  initTypeOption() {
+    this.call.callService("/type/list",{},
+      (val) => {
+        this.typeOption = val.data;
+      });
+  }
+
+  getTypeName(value:number): string {
+    const tempItem = this.typeOption.find((item) => item.typeId === value);
+    return tempItem.typeName;
   }
 
   queryBookList() {
@@ -70,7 +80,8 @@ export class AdminBookComponent implements OnInit {
         "pageSize": this.pageSize,
         "keyWord":this.keyWord,
         "timeStart":this.timeStart,
-        "timeEnd":this.timeEnd
+        "timeEnd":this.timeEnd,
+        "type":this.typeQuery
       },
       (val) => {
       this.pageTotal = val.data.total;
@@ -102,11 +113,7 @@ export class AdminBookComponent implements OnInit {
       (val) => {
 
         // 清空表单数据
-        this.bookId = undefined;
-        this.bookName = "";
-        this.bookInfo = "";
-        this.isDisabled = 0;
-        this.type = 0;
+        this.cleanForm();
 
         // 返回list
         this.queryBookList();
@@ -117,11 +124,7 @@ export class AdminBookComponent implements OnInit {
   onDecline(): void {
     this.modalRef.hide();
     // 清空表单数据
-    this.bookId = undefined;
-    this.bookName = "";
-    this.bookInfo = "";
-    this.isDisabled = 0;
-    this.type = 0;
+    this.cleanForm();
   }
 
   onPageChange(pageEvent) {
@@ -170,6 +173,15 @@ export class AdminBookComponent implements OnInit {
     this.keyWord = '';
     this.timeStart = null;
     this.timeEnd = null;
+    this.typeQuery = "";
+  }
+
+  cleanForm() {
+    this.bookId = undefined;
+    this.bookName = "";
+    this.bookInfo = "";
+    this.isDisabled = 0;
+    this.type = "";
   }
 
 

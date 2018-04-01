@@ -33,8 +33,10 @@ export class AdminBookArticleComponent implements OnInit {
 
   articleList:any;
 
-  bookOption:any;
-  statusOption:any;
+  bookOption:any = [];
+  statusOption:any = [];
+
+  bookIdQuery:any = "";
 
   constructor(private modalService: BsModalService,
               private call: CallService) {
@@ -55,8 +57,17 @@ export class AdminBookArticleComponent implements OnInit {
     ];
     this.call.callService("/book/list",{},
       (val) => {
-      this.bookOption = val.data;
+      const tempData = val.data;
+      tempData.forEach((item) => {
+        const ext = item.isDisabled === 0 ?"[正常]" : "[禁用]";
+        item.bookName = ext+item.bookName;
       });
+      this.bookOption = tempData;
+      });
+  }
+  getBookName(value:number):string {
+    const tempItem = this.bookOption.find((item) => item.bookId === value);
+    return tempItem.bookName;
   }
 
   onOpenAddModal(template: TemplateRef<any>) {
@@ -90,11 +101,7 @@ export class AdminBookArticleComponent implements OnInit {
       () => {
 
         // 清空表单数据
-        this.contentId = undefined;
-        this.bookId = "";
-        this.contentTitle = "";
-        this.contentTxt = "";
-        this.status = "";
+        this.cleanForm();
 
         // 返回list
         this.queryArticleList();
@@ -105,11 +112,7 @@ export class AdminBookArticleComponent implements OnInit {
   onDecline(): void {
     this.modalRef.hide();
     // 清空表单数据
-    this.contentId = undefined;
-    this.bookId = "";
-    this.contentTitle = "";
-    this.contentTxt = "";
-    this.status = "";
+    this.cleanForm();
 
   }
 
@@ -137,7 +140,8 @@ export class AdminBookArticleComponent implements OnInit {
         "pageSize": this.pageSize,
         "keyWord":this.keyWord,
         "timeStart":this.timeStart,
-        "timeEnd":this.timeEnd
+        "timeEnd":this.timeEnd,
+        "bookId":this.bookIdQuery
       },
       (val) => {
         this.pageTotal = val.data.total;
@@ -153,5 +157,13 @@ export class AdminBookArticleComponent implements OnInit {
     this.keyWord = '';
     this.timeStart = null;
     this.timeEnd = null;
+    this.bookIdQuery = "";
+  }
+  cleanForm() {
+    this.contentId = undefined;
+    this.bookId = "";
+    this.contentTitle = "";
+    this.contentTxt = "";
+    this.status = "";
   }
 }

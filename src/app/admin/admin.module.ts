@@ -14,7 +14,6 @@ import {MyMaterialModule} from "../common/my-material.module";
 import {FormsModule} from "@angular/forms";
 import {BsDatepickerModule, ModalModule} from "ngx-bootstrap";
 import {CallService} from "../common/service/call.service";
-import {TypeOptionPipe} from "./pipe/type-option.pipe";
 import {IsDisablePipe} from "./pipe/is-disable.pipe";
 import {StatusPipe} from "./pipe/status.pipe";
 import {MarkdownModule} from "ngx-markdown";
@@ -22,7 +21,6 @@ import {MarkdownModule} from "ngx-markdown";
 
 @NgModule({
   declarations:[
-    TypeOptionPipe,
     IsDisablePipe,
     StatusPipe,
     AdminComponent,

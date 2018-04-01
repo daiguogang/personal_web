@@ -14,19 +14,28 @@
   <hr/>
   <div class="query-form">
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <div class="form-group">
           <input type="text"
                  placeholder="名称关键字"
                  [(ngModel)]="keyWord"
-                 class="input-width">
+                 class="">
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2">
+        <div class="form-group">
+          <select class="form-control select-control "
+                  [(ngModel)]="typeQuery">
+            <option value="">-请选择类型-</option>
+            <option *ngFor="let item of typeOption" [value]="item.typeId">{{item.typeName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-2">
         <div class="form-group">
           <input type="text"
                  placeholder="开始时间"
-                 class="input-width"
+                 class=""
                  placement="bottom left"
                  [bsValue]="timeStart"
                  (bsValueChange)="onTimeStartChange($event)"
@@ -34,11 +43,11 @@
                  bsDatepicker>
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <div class="form-group">
           <input type="text"
                  placeholder="结束时间"
-                 class="input-width"
+                 class=""
                  placement="bottom left"
                  [bsValue]="timeEnd"
                  (bsValueChange)="onTimeEndChange($event)"
@@ -46,7 +55,8 @@
                  bsDatepicker>
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2">
         <button mat-raised-button color="primary" (click)="onQueryList()"><i class="fa fa-search"></i><span>查询</span></button>
       </div>
 
@@ -72,7 +82,7 @@
         <tr *ngFor="let item of categoryList">
           <td>{{item.categoryName}}</td>
           <td>{{item.description}}</td>
-          <td>{{item.type | typeOption}}</td>
+          <td>{{getTypeName(item.type)}}</td>
           <td>{{item.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
           <td><mat-slide-toggle checked="{{item.isDisabled | isDisable}}" (change)="onDisableChange($event,item)">禁用</mat-slide-toggle></td>
           <td>
@@ -112,10 +122,11 @@
       </button>
     </div>
     <div class="modal-body">
-      <div>
+      <form #categoryForm="ngForm">
         <div class="form-group form-inline">
           <label class="col-lg-2">名称</label>
           <input class="col-lg-10" type="text"
+                 name="categoryName"
                  required
                  [(ngModel)]="categoryName" #category_name="ngModel">
 
@@ -128,13 +139,21 @@
         <div class="form-group form-inline">
           <label class="col-lg-2">类型</label>
           <select class="col-lg-10 form-control select-control "
-                  [(ngModel)]="type">
-            <option *ngFor="let item of typeOption" [value]="item.id">{{item.name}}</option>
+                  required
+                  name="type"
+                  [(ngModel)]="type" #category_type="ngModel">
+            <option value="">-请选择类型-</option>
+            <option *ngFor="let item of typeOption" [value]="item.typeId">{{item.typeName}}</option>
           </select>
+          <div *ngIf="category_type.invalid && (category_type.dirty || category_type.touched)"
+               class="alert alert-danger col-lg-10 custom-alert custom-alert2">
+            <div *ngIf="category_type.errors.required">请务必选择一个类型</div>
+          </div>
         </div>
         <div class="form-group form-inline">
           <label class="col-lg-2">禁用</label>
           <select class="col-lg-10 form-control select-control "
+                  name="isDisabled"
                   [(ngModel)]="isDisabled">
             <option *ngFor="let item of disableOption" [value]="item.id">{{item.name}}</option>
           </select>
@@ -142,15 +161,16 @@
         <div class="form-group form-inline">
           <label class="col-lg-2">描述</label>
           <textarea class="col-lg-10" rows="3"
+                    name="description"
                     [(ngModel)]="description">
         </textarea>
         </div>
 
-      </div>
+      </form>
 
       <div class="">
         <button mat-raised-button color="primary"
-                [disabled]="!category_name.valid"
+                [disabled]="!categoryForm.form.valid"
                 (click)="onConfirm()">
           <i class="fa fa-save"></i><span>提交</span>
         </button>

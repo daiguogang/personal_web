@@ -13,19 +13,28 @@
   <hr/>
   <div class="query-form">
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <div class="form-group">
           <input type="text"
                  placeholder="标题关键字"
                  [(ngModel)]="keyWord"
-                 class="input-width">
+                 class="">
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2">
+        <div class="form-group">
+          <select class="form-control select-control"
+                  [(ngModel)]="categoryIdQuery">
+            <option value="">-请选择一个分类-</option>
+            <option *ngFor="let item of categoryOption" [value]="item.categoryId">{{item.categoryName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-2">
         <div class="form-group">
           <input type="text"
                  placeholder="开始时间"
-                 class="input-width"
+                 class=""
                  placement="bottom left"
                  [bsValue]="timeStart"
                  (bsValueChange)="onTimeStartChange($event)"
@@ -33,11 +42,11 @@
                  bsDatepicker>
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <div class="form-group">
           <input type="text"
                  placeholder="结束时间"
-                 class="input-width"
+                 class=""
                  placement="bottom left"
                  [bsValue]="timeEnd"
                  (bsValueChange)="onTimeEndChange($event)"
@@ -45,7 +54,8 @@
                  bsDatepicker>
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2">
         <button mat-raised-button color="primary" (click)="onQueryList()"><i class="fa fa-search"></i><span>查询</span></button>
       </div>
 
