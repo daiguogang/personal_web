@@ -3,11 +3,11 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {CallService} from "../common/service/call.service";
 
 @Component({
-  templateUrl:'./admin-blog.component.html',
+  templateUrl:'./admin-content.component.html',
   styleUrls:['./admin.component.css']
 })
 
-export class AdminBlogComponent implements OnInit {
+export class AdminContentComponent implements OnInit {
   pageTotal:number;
   pageSize = 10;
   pageSizeOptions = [5, 10];
@@ -46,9 +46,9 @@ export class AdminBlogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.type = 1; // 注：默认type为1位技术博客类，详见数据库，博客类别只查询type=1
+    this.type = 1; // 注：默认type为1位技术博客类，详见数据库，可根据需要修改。内容管理需要排除type=1的类别
+    this.isBlog = 0;// 是否是博客1是，0否，默认0,内容管理页均为0
     this.pageNumber = 1;
-    this.isBlog = 1;// 是否是博客1是，0否，默认0
     this.initOption();
     this.queryBlogList();
 
@@ -60,7 +60,7 @@ export class AdminBlogComponent implements OnInit {
       {"id":1,"name":"正常发布"},
       {"id":2,"name":"回收站"}
     ];
-    this.call.callService("/category/list",{"type":this.type},
+    this.call.callService("/category/list2",{"type":this.type},
       (val) => {
         const tempData = val.data;
         tempData.forEach((item) => {

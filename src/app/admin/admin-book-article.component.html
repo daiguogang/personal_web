@@ -26,7 +26,7 @@
           <select class="form-control select-control"
                   name="bookId"
                   [(ngModel)]="bookIdQuery">
-            <option value="">-请选择系列和教程-</option>
+            <option value="">-请选择系列或者教程-</option>
             <option *ngFor="let item of bookOption" [value]="item.bookId">{{item.bookName}}</option>
           </select>
         </div>
@@ -71,7 +71,7 @@
         <thead>
         <tr>
           <th>标题</th>
-          <th>所属教程</th>
+          <th>所属教程或系列</th>
           <th>创建日期</th>
           <th>状态</th>
           <th>操作</th>
@@ -136,7 +136,7 @@
                         name="bookId"
                         required
                         [(ngModel)]="bookId" #book_id="ngModel">
-                  <option value="">-请选择系列和教程-</option>
+                  <option value="">-请选择系列或教程-</option>
                   <option *ngFor="let item of bookOption" [value]="item.bookId">{{item.bookName}}</option>
                 </select>
               </div>

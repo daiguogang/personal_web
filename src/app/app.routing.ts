@@ -14,6 +14,7 @@ import {AdminUserComponent} from "./admin/admin-user.component";
 import {AdminCommentComponent} from "./admin/admin-comment.component";
 import {AdminBookComponent} from "./admin/admin-book.component";
 import {AdminBookArticleComponent} from "./admin/admin-book-article.component";
+import {AdminContentComponent} from "./admin/admin-content.component";
 
 const routes:Routes = [
   {path:'home',component:HomeComponent},
@@ -23,6 +24,7 @@ const routes:Routes = [
   {path:'admin',component:AdminComponent,children:[
     {path:'main',component:AdminMainComponent},
     {path:'blog',component:AdminBlogComponent},
+    {path:'content',component:AdminContentComponent},
     {path:'category',component:AdminCategoryComponent},
     {path:'saying',component:AdminSayingComponent},
     {path:'user',component:AdminUserComponent},

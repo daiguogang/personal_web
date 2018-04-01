@@ -17,6 +17,7 @@ import {CallService} from "../common/service/call.service";
 import {IsDisablePipe} from "./pipe/is-disable.pipe";
 import {StatusPipe} from "./pipe/status.pipe";
 import {MarkdownModule} from "ngx-markdown";
+import {AdminContentComponent} from "./admin-content.component";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MarkdownModule} from "ngx-markdown";
     AdminUserComponent,
     AdminCommentComponent,
     AdminBookComponent,
-    AdminBookArticleComponent
+    AdminBookArticleComponent,
+    AdminContentComponent
   ],
   imports:[
     CommonModule,

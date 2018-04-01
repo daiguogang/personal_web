@@ -1,0 +1,218 @@
+
+
+
+<div>
+
+  <div class="tool-bar">
+    <div class="">
+      <button mat-icon-button matTooltip="新增" color="accent"
+              (click)="onOpenAddModal(template)">
+        <mat-icon class="fa fa-plus icon-size1"></mat-icon>
+      </button>
+    </div>
+  </div>
+  <hr/>
+  <div class="query-form">
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="form-group">
+          <input type="text"
+                 placeholder="标题关键字"
+                 [(ngModel)]="keyWord"
+                 class="">
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="form-group">
+          <select class="form-control select-control"
+                  [(ngModel)]="categoryIdQuery">
+            <option value="">-请选择一个分类-</option>
+            <option *ngFor="let item of categoryOption" [value]="item.categoryId">{{item.categoryName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="form-group">
+          <input type="text"
+                 placeholder="开始时间"
+                 class=""
+                 placement="bottom left"
+                 [bsValue]="timeStart"
+                 (bsValueChange)="onTimeStartChange($event)"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD HH:mm:ss',containerClass:'theme-default',locale:'zh-cn' }"
+                 bsDatepicker>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="form-group">
+          <input type="text"
+                 placeholder="结束时间"
+                 class=""
+                 placement="bottom left"
+                 [bsValue]="timeEnd"
+                 (bsValueChange)="onTimeEndChange($event)"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD HH:mm:ss',containerClass:'theme-default',locale:'zh-cn' }"
+                 bsDatepicker>
+        </div>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2">
+        <button mat-raised-button color="primary" (click)="onQueryList()"><i class="fa fa-search"></i><span>查询</span></button>
+      </div>
+
+
+    </div>
+  </div>
+  <hr/>
+  <div class="admin-content-list">
+    <div  class="custom-table-height">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>标题</th>
+          <th>概要</th>
+          <th>所属分类</th>
+          <th>创建日期</th>
+          <th>状态</th>
+          <th>操作</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of blogList;">
+          <td>{{item.contentTitle}}</td>
+          <td>{{item.contentDesc}}</td>
+          <td>{{getCategoryName(item.categoryId)}}</td>
+          <td>{{item.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
+          <td>{{item.status | statusPipe}}</td>
+          <td>
+            <button mat-icon-button matTooltip="编辑"
+                    color="primary"
+                    (click)="onClickEdit(item,template)">
+              <mat-icon class="fa fa-edit icon-size1"></mat-icon>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <mat-paginator [length]="pageTotal"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+
+</div>
+
+
+<ng-template #template>
+
+  <div class="modal-custom-content">
+    <div class="modal-header modal-custom-header">
+      <h5 class="modal-title pull-left">新增或修改文章</h5>
+      <button mat-icon-button class="pull-right" (click)="onDecline()" color="accent">
+        <span><i class="fa fa-close"></i></span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #contentForm="ngForm">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group form-inline">
+              <input class="col-lg-12"
+                     placeholder="请输入内容标题"
+                     name="contentTitle"
+                     required
+                     type="text" [(ngModel)]="contentTitle" #content_title="ngModel">
+            </div>
+            <div *ngIf="content_title.invalid && (content_title.dirty || content_title.touched)"
+                 class="alert alert-danger custom-alert">
+              <div *ngIf="content_title.errors.required">内容标题是必填项</div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group form-inline">
+              <select class="col-lg-12 form-control select-control"
+                      name="bookId"
+                      required
+                      [(ngModel)]="categoryId" #category_id="ngModel">
+                <option value="">-请选择一个分类-</option>
+                <option *ngFor="let item of categoryOption" [value]="item.categoryId">{{item.categoryName}}</option>
+              </select>
+            </div>
+            <div *ngIf="category_id.invalid && (category_id.dirty || category_id.touched)"
+                 class="alert alert-danger custom-alert">
+              <div *ngIf="category_id.errors.required">必须选择一个分类</div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group form-inline">
+              <select class="col-lg-12 form-control select-control"
+                      name="bookStatus"
+                      required
+                      [(ngModel)]="status" #book_status="ngModel">
+                <option value="">-请选择状态-</option>
+                <option *ngFor="let item of statusOption" [value]="item.id">{{item.name}}</option>
+              </select>
+            </div>
+            <div *ngIf="book_status.invalid && (book_status.dirty || book_status.touched)"
+                 class="alert alert-danger custom-alert">
+              <div *ngIf="book_status.errors.required">必须标记一个状态</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group form-inline">
+              <input class="col-lg-12"
+                     placeholder="请输入概要或者介绍"
+                     name="contentDesc"
+                     required
+                     type="text" [(ngModel)]="contentDesc" #content_desc="ngModel">
+            </div>
+            <div *ngIf="content_desc.invalid && (content_desc.dirty || content_desc.touched)"
+                 class="alert alert-danger custom-alert">
+              <div *ngIf="content_desc.errors.required">请务必输入一些简短的描述信息</div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+
+          <div class="modal-custom-height col-lg-12">
+            <div class="pull-left col-lg-6 modal-custom-body pl-0">
+                <textarea class=" custom-textArea"
+                          name="contentTxt"
+                          placeholder="请输入正文，请使用markdown语法"
+                          [(ngModel)] = "contentTxt">
+                </textarea>
+            </div>
+
+            <div class="pull-right col-lg-6 modal-custom-body">
+              <div class="custom-textArea">
+                <markdown [data]="contentTxt"></markdown>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <button mat-raised-button color="primary"
+                  [disabled]="!contentForm.form.valid"
+                  (click)="onConfirm()">
+            <i class="fa fa-save"></i><span>提交</span>
+          </button>
+          <button mat-raised-button color="primary" (click)="onDecline()">
+            <i class="fa fa-close"></i><span>取消</span>
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</ng-template>
