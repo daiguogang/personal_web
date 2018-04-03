@@ -13,6 +13,7 @@ import {MarkdownModule, MarkedOptions} from "ngx-markdown";
 import {markedOptionsFactory} from "./common/markdown/marked-options-factory";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [

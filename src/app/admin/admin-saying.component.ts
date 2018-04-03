@@ -143,13 +143,11 @@ export class AdminSayingComponent implements OnInit {
   }
 
   onClickDelete(delete_template: TemplateRef<any>,item) {
-    debugger;
     this.id = item.id;
     this.modalRefDelete = this.modalService.show(delete_template, this.config);
 
   }
   onDeleteConfirm() {
-    debugger;
     this.call.callService("/word/delete",
       {"id":this.id},
       ()=> {
