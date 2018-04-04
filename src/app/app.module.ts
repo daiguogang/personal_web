@@ -12,8 +12,10 @@ import {UserModule} from "./user/user.module";
 import {MarkdownModule, MarkedOptions} from "ngx-markdown";
 import {markedOptionsFactory} from "./common/markdown/marked-options-factory";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientModule} from "@angular/common/http";
-import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthenticationInterceptor} from "./authentication.interceptor";
+import {AuthService} from "./auth.service";
+import {AuthGuard} from "./auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     UserModule,
     AppRouting
   ],
-  providers: [],
+  providers: [
+    AuthGuard,AuthService,
+    {provide:HTTP_INTERCEPTORS,useClass:AuthenticationInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

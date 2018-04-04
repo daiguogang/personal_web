@@ -1,12 +1,14 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {AuthService} from "../../auth.service";
+
 
 /**
  * 统一的服务调用入口，方便修改url
  */
 @Injectable()
 export class CallService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private authService:AuthService) {
   }
 
   callService(url, data, callback) {
