@@ -1,4 +1,4 @@
-.web-main{
+.home-main{
   height:100%;
   position: relative;
   z-index:20;
@@ -7,20 +7,9 @@
   background-color: #fbfbfb;
   border-bottom: solid 1px #ddd;
 }
-.web-nav{
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 10;
-  height: 9%;
-}
-.web-home-nav{
-  position: fixed;
-  right: 20px;
-}
 
-.web-content-brand {
+
+.home-content-brand {
   position: absolute;
   width: 100%;
   top: 200px;
@@ -36,24 +25,24 @@
   font-size: 18px;
 }
 
-.web-content{
+.home-content{
   height:90%;
 }
 
-.web-content-saying{
+.home-content-saying{
   height: 60%;
 }
 
-.web-content-header{
+.home-content-header{
   width: 100%;
   height: 30%;
   padding-top: 9rem;
 }
-.web-content-content{
+.home-content-content{
   width: 100%;
   height: 70%;
 }
-.web-content-h3{
+.home-content-h3{
   text-align: center;
 }
 
@@ -65,12 +54,16 @@ hr.divider {
   border-top: 1px dashed #aaa;
 }
 
-.web-main-content{
+.web-content{
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding-top: 6%;
+  padding-top: 5.5em;
+  margin-right: 0px;
+  margin-left: 0px;
+
 }
+
+
 .main-left-daily{
   height: 20%;
   display: flex;

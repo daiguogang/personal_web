@@ -9,5 +9,21 @@
 .font-css{
   font-size: 1.2em;
 }
+.web-nav{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  height: 5em;
+}
+.web-nav-menu{
+  position: fixed;
+  right: 20px;
+}
+
+a:hover{
+  cursor: pointer;
+}
 
 
