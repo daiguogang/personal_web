@@ -1,12 +1,17 @@
 
-<h2>LOGIN</h2>
-<p>{{message}}</p>
 
-<input type="text" [(ngModel)]="userAccount" placeholder="账号">
-<input type="password" [(ngModel)]="password" placeholder="密码">
-<p>
-  <!--<button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>-->
-  <!--<button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>-->
-  <button (click)="login()" >Login</button>
-  <button (click)="logout()" >Logout</button>
-</p>
+<div class="row web-content login-main bg-info">
+  <div class="login-content bg-primary">
+    <h2>LOGIN</h2>
+    <p>{{message}}</p>
+
+    <input type="text" [(ngModel)]="userAccount" placeholder="账号">
+    <input type="password" [(ngModel)]="password" placeholder="密码">
+    <p>
+      <!--<button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>-->
+      <!--<button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>-->
+      <button (click)="login()" >Login</button>
+      <button (click)="cancel()" >cancel</button>
+    </p>
+  </div>
+</div>

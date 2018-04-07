@@ -28,14 +28,14 @@ export class AppComponent implements OnInit,OnChanges {
   }
 
   ngOnChanges() {
-    this.isLogged = this.auth.isLoggedIn();
+    // this.isLogged = this.auth.isLoggedIn();
   }
 
 
   onLogout() {
     this.auth.logout();
     this.isLogged = false;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
 }

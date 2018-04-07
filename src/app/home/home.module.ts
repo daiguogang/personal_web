@@ -7,14 +7,16 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {PaginationConfig, PaginationModule} from "ngx-bootstrap";
 import {FormsModule} from "@angular/forms";
 import {CustomPaginationConfig} from "../common/ngx-bootstrap/custom-pagination.config";
+import {HomeBlogComponent} from "./home-blog.component";
 
 @NgModule({
   declarations:[
     HomeComponent,
-    HomeMainComponent
+    HomeMainComponent,
+    HomeBlogComponent
   ],
   imports:[
-    // CommonModule
+    CommonModule,
     FormsModule,
     MatDatepickerModule,
     MatMomentDateModule,

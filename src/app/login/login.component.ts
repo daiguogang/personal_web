@@ -51,9 +51,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  logout() {
-    this.authService.logout();
-    this.setMessage();
+  cancel() {
+    // this.authService.logout();
+    // this.setMessage();
+    this.router.navigate(['/home']);
   }
 
 

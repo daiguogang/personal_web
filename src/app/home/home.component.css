@@ -64,11 +64,61 @@ hr.divider {
 }
 
 
-.main-left-daily{
+.main-left-list{
+  height: 100%;
+  display: block;
+}
+
+.main-content{
+  padding: 1.2em;
+}
+
+.content-ul li{
+  border-bottom: 0.1em solid #d3d3d3;
+}
+
+.li-content-head{
+  font-size: 1.5em;
+}
+.li-content-head a:hover{
+  cursor: pointer;
+}
+.head-a{
+  position: relative;
+  text-decoration: none;
+}
+.head-a:before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: #000;
+  transform: scale(0);
+  transition: all 0.3s;
+}
+.head-a:hover:before{
+  transform: scale(1);
+}
+
+.li-content-desc{
+
+}
+.li-content-footer{
+  /*margin-left: 50em;*/
+  font-size: 0.8em;
+}
+.footer-span > span{
+  margin-left: 1em;
+}
+
+.main-right-daily{
   height: 20%;
   display: flex;
   flex-direction: column;
 }
+
 .daily-content{
   display: flex;
 }
@@ -77,21 +127,10 @@ hr.divider {
   justify-content: flex-end;
 }
 
-.main-left-date{
-  height: 30%;
-}
-.main-left-rank{
+.main-right-rank{
   height: 40%;
   display: flex;
   flex-direction: column;
 }
 
-.main-right-head{
-  height: 10%;
-}
-.main-right-form{
-  height: 10%;
-}
-.main-right-list{
-  height: 110%;
-}
+

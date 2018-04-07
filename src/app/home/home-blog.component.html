@@ -1,0 +1,96 @@
+
+
+<div class="row web-content">
+
+  <div class="col-lg-9">
+    <div class="row main-left-list bg-danger">
+      <div class="main-content">
+        <ul class="list-unstyled content-ul">
+          <li *ngFor="let item of blogList">
+            <div class="li-content-head">
+              <a class="head-a">这是一个标题,这是一个标题,这是一个标题,</a>
+            </div>
+            <div class="li-content-desc">
+              <p>这是一些内容</p>
+            </div>
+            <div class="li-content-footer row">
+              <div class="col-lg-8"></div>
+              <div class="col-lg-4 footer-span">
+                <span><i class="fa fa-calendar-check-o"></i>2018-04-04 14:55:32</span>
+                <span><i class="fa fa-eye"></i>12312</span>
+                <span><i class="fa fa-heart"></i>12123</span>
+              </div>
+
+            </div>
+          </li>
+          <li>111</li>
+
+        </ul>
+        <div class="col-xs-12 col-12">
+          <pagination [totalItems]="bigTotalItems"
+                      [(ngModel)]="bigCurrentPage"
+                      [maxSize]="maxSize" class="pagination"
+                      [boundaryLinks]="true"
+                      [rotate]="false"
+                      (pageChanged)="onPageChanged($event)">
+          </pagination>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="col-lg-3">
+    <div class="row main-right-daily bg-success">
+      <div>每日一句</div>
+      <div class="daily-content">
+        <span>
+          生如夏花之绚烂，死如秋叶之静美.
+          生如夏花之绚烂，死如秋叶之静美.
+          生如夏花之绚烂，死如秋叶之静美.
+        </span>
+      </div>
+      <div class="daily-author">
+        <span>——泰戈尔</span>
+      </div>
+    </div>
+
+    <div class="row main-right-rank bg-info">
+      <div>每日一句</div>
+      <div>
+        <ul class="list-unstyled">
+          <li><span>1</span><span>学而时习之</span></li>
+          <li><span>2</span><span>学而时习之</span></li>
+          <li><span>3</span><span>学而时习之</span></li>
+          <li><span>4</span><span>学而时习之</span></li>
+          <li><span>5</span><span>学而时习之</span></li>
+          <li><span>6</span><span>学而时习之</span></li>
+          <li><span>7</span><span>学而时习之</span></li>
+          <li><span>8</span><span>学而时习之</span></li>
+          <li><span>9</span><span>学而时习之</span></li>
+          <li><span>10</span><span>学而时习之</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row main-right-rank bg-success">
+      <div>每日一句</div>
+      <div>
+        <ul class="list-unstyled">
+          <li><span>1</span><span>学而时习之</span></li>
+          <li><span>2</span><span>学而时习之</span></li>
+          <li><span>3</span><span>学而时习之</span></li>
+          <li><span>4</span><span>学而时习之</span></li>
+          <li><span>5</span><span>学而时习之</span></li>
+          <li><span>6</span><span>学而时习之</span></li>
+          <li><span>7</span><span>学而时习之</span></li>
+          <li><span>8</span><span>学而时习之</span></li>
+          <li><span>9</span><span>学而时习之</span></li>
+          <li><span>10</span><span>学而时习之</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+</div>
