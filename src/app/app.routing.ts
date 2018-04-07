@@ -18,10 +18,12 @@ import {AdminContentComponent} from "./admin/admin-content.component";
 import {AuthGuard} from "./auth-guard.service";
 import {AuthService} from "./auth.service";
 import {HomeBlogComponent} from "./home/home-blog.component";
+import {HomeContentDetailComponent} from "./home/home-content-detail.component";
 
 const routes:Routes = [
   {path:'home',component:HomeComponent},
   {path:'blog',component:HomeBlogComponent},
+  {path:'detail',component:HomeContentDetailComponent},
   {path:'main/:type',component:HomeMainComponent},
   {path:'login',component:LoginComponent},
   {path:'profile',component:ProfileComponent},

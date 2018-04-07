@@ -8,19 +8,23 @@ import {PaginationConfig, PaginationModule} from "ngx-bootstrap";
 import {FormsModule} from "@angular/forms";
 import {CustomPaginationConfig} from "../common/ngx-bootstrap/custom-pagination.config";
 import {HomeBlogComponent} from "./home-blog.component";
+import {HomeContentDetailComponent} from "./home-content-detail.component";
+import {MarkdownModule} from "ngx-markdown";
 
 @NgModule({
   declarations:[
     HomeComponent,
     HomeMainComponent,
-    HomeBlogComponent
+    HomeBlogComponent,
+    HomeContentDetailComponent
   ],
   imports:[
     CommonModule,
     FormsModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    PaginationModule
+    PaginationModule,
+    MarkdownModule.forChild()
   ],
   exports:[],
   providers:[{provide:PaginationConfig,useClass:CustomPaginationConfig}]

@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {Router} from "@angular/router";
 
 @Component({
   templateUrl:'./home-blog.component.html',
@@ -18,5 +19,10 @@ export class HomeBlogComponent {
     {"name":"9"},
     {"name":"10"}
     ];
+  constructor(private router: Router) {}
+
+  onDetail(item) {
+    this.router.navigate(['detail']);
+  }
 
 }

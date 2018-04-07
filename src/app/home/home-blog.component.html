@@ -1,6 +1,6 @@
 
 
-<div class="row web-content">
+<div class="row web-content1">
 
   <div class="col-lg-9">
     <div class="row main-left-list bg-danger">
@@ -8,7 +8,8 @@
         <ul class="list-unstyled content-ul">
           <li *ngFor="let item of blogList">
             <div class="li-content-head">
-              <a class="head-a">这是一个标题,这是一个标题,这是一个标题,</a>
+              <a class="head-a"
+                 (click)="onDetail(item)">这是一个标题,这是一个标题,这是一个标题,</a>
             </div>
             <div class="li-content-desc">
               <p>这是一些内容</p>
@@ -23,17 +24,19 @@
 
             </div>
           </li>
-          <li>111</li>
 
         </ul>
         <div class="col-xs-12 col-12">
-          <pagination [totalItems]="bigTotalItems"
-                      [(ngModel)]="bigCurrentPage"
-                      [maxSize]="maxSize" class="pagination"
-                      [boundaryLinks]="true"
-                      [rotate]="false"
-                      (pageChanged)="onPageChanged($event)">
-          </pagination>
+          <div class="pull-right">
+            <pagination class="pagination"
+                        [totalItems]="bigTotalItems"
+                        [(ngModel)]="bigCurrentPage"
+                        [maxSize]="maxSize"
+                        [boundaryLinks]="true"
+                        [rotate]="false"
+                        (pageChanged)="onPageChanged($event)">
+            </pagination>
+          </div>
         </div>
       </div>
 
