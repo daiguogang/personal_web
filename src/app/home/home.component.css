@@ -122,6 +122,11 @@ hr.divider {
   margin-left: 1em;
 }
 
+.main-right{
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .main-right-daily{
   height: 20%;
   display: flex;

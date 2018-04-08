@@ -23,7 +23,7 @@ import {HomeContentDetailComponent} from "./home/home-content-detail.component";
 const routes:Routes = [
   {path:'home',component:HomeComponent},
   {path:'blog',component:HomeBlogComponent},
-  {path:'detail',component:HomeContentDetailComponent},
+  {path:'detail/:contentId',component:HomeContentDetailComponent},
   {path:'main/:type',component:HomeMainComponent},
   {path:'login',component:LoginComponent},
   {path:'profile',component:ProfileComponent},
