@@ -31,6 +31,7 @@ export class AdminContentComponent implements OnInit {
   contentDesc:string;
   status:any = "";
   isBlog:number;
+  isPublic:number;
 
   type:number;
 
@@ -177,6 +178,20 @@ export class AdminContentComponent implements OnInit {
     this.contentTxt = "";
     this.contentDesc = "";
     this.status = "";
+  }
+
+  onPublicChange(event,item) {
+    let isPublic;
+    if(event.checked === false) {
+      isPublic = 0;
+    }else {
+      isPublic = 1;
+    }
+    this.call.callService("/content/update",
+      {"contentId":item.contentId,"isPublic":isPublic},
+      () => {
+
+      });
   }
 
 }

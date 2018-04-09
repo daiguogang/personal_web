@@ -41,7 +41,8 @@ export class BlogComponent implements OnInit {
       {
         "currentPage":this.currentPage,
         "pageSize":this.pageSize,
-        "isBlog":this.isBlog
+        "isBlog":this.isBlog,
+        "isPublic":1
       },
       (val) => {
         this.totalItems = val.data.total;

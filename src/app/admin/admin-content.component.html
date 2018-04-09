@@ -74,6 +74,7 @@
           <th>所属分类</th>
           <th>创建日期</th>
           <th>状态</th>
+          <th>公开</th>
           <th>操作</th>
 
         </tr>
@@ -85,6 +86,7 @@
           <td>{{getCategoryName(item.categoryId)}}</td>
           <td>{{item.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
           <td>{{item.status | statusPipe}}</td>
+          <td><mat-slide-toggle checked="{{item.isPublic | isDisable}}" (change)="onPublicChange($event,item)"></mat-slide-toggle></td>
           <td>
             <button mat-icon-button matTooltip="编辑"
                     color="primary"
