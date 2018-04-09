@@ -17,13 +17,16 @@ import {AdminBookArticleComponent} from "./admin/admin-book-article.component";
 import {AdminContentComponent} from "./admin/admin-content.component";
 import {AuthGuard} from "./auth-guard.service";
 import {AuthService} from "./auth.service";
-import {HomeBlogComponent} from "./home/home-blog.component";
-import {HomeContentDetailComponent} from "./home/home-content-detail.component";
+import {BlogComponent} from "./home/blog/blog.component";
+import {BlogListComponent} from "./home/blog/blog-list.component";
+import {BlogContentComponent} from "./home/blog/blog-content.component";
 
 const routes:Routes = [
   {path:'home',component:HomeComponent},
-  {path:'blog',component:HomeBlogComponent},
-  {path:'detail/:contentId',component:HomeContentDetailComponent},
+  {path:'blog',component:BlogComponent},
+  {path:'blog/list/:categoryId',component:BlogListComponent,children:[
+    {path:"content/:contentId",component:BlogContentComponent}
+  ]},
   {path:'main/:type',component:HomeMainComponent},
   {path:'login',component:LoginComponent},
   {path:'profile',component:ProfileComponent},

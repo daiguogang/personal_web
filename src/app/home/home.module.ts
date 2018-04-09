@@ -7,16 +7,19 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {PaginationConfig, PaginationModule} from "ngx-bootstrap";
 import {FormsModule} from "@angular/forms";
 import {CustomPaginationConfig} from "../common/ngx-bootstrap/custom-pagination.config";
-import {HomeBlogComponent} from "./home-blog.component";
-import {HomeContentDetailComponent} from "./home-content-detail.component";
+import {BlogComponent} from "./blog/blog.component";
+import {BlogListComponent} from "./blog/blog-list.component";
 import {MarkdownModule} from "ngx-markdown";
+import {BlogContentComponent} from "./blog/blog-content.component";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations:[
     HomeComponent,
     HomeMainComponent,
-    HomeBlogComponent,
-    HomeContentDetailComponent
+    BlogComponent,
+    BlogListComponent,
+    BlogContentComponent
   ],
   imports:[
     CommonModule,
@@ -24,7 +27,8 @@ import {MarkdownModule} from "ngx-markdown";
     MatDatepickerModule,
     MatMomentDateModule,
     PaginationModule,
-    MarkdownModule.forChild()
+    MarkdownModule.forChild(),
+    RouterModule
   ],
   exports:[],
   providers:[{provide:PaginationConfig,useClass:CustomPaginationConfig}]

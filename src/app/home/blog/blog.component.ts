@@ -1,14 +1,14 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {CallService} from "../common/service/call.service";
-import {BlogParamMessageService} from "./service/blog-param-message.service";
+import {CallService} from "../../common/service/call.service";
+import {BlogParamMessageService} from "../service/blog-param-message.service";
 
 @Component({
-  templateUrl:'./home-blog.component.html',
-  styleUrls:['./home.component.css'],
+  templateUrl:'./blog.component.html',
+  styleUrls:['../home.component.css'],
   providers:[]
 })
-export class HomeBlogComponent implements OnInit {
+export class BlogComponent implements OnInit {
 
   isBlog:number;
 
@@ -51,7 +51,7 @@ export class HomeBlogComponent implements OnInit {
 
   onDetail(item) {
     this.paramMessage.data = item;
-    this.router.navigate(['detail',item.contentId]);
+    this.router.navigate(['blog/list',item.categoryId]);
   }
 
 }
