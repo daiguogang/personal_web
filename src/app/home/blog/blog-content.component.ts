@@ -21,8 +21,6 @@ export class BlogContentComponent implements OnInit {
               private call:CallService) {}
 
   ngOnInit() {
-    debugger;
-    // this.contentId = this.activeRoute.snapshot.params["contentId"];
     this.activeRoute.params.subscribe(params => {
       this.contentId = params.contentId;
       this.getBlogContent();

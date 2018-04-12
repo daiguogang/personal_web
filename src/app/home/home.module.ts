@@ -1,9 +1,6 @@
 import {NgModule} from "@angular/core";
 import {HomeComponent} from "./home.component";
 import {CommonModule} from "@angular/common";
-import {HomeMainComponent} from "./home-main.component";
-import {MatDatepickerModule} from "@angular/material";
-import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {PaginationConfig, PaginationModule} from "ngx-bootstrap";
 import {FormsModule} from "@angular/forms";
 import {CustomPaginationConfig} from "../common/ngx-bootstrap/custom-pagination.config";
@@ -12,20 +9,21 @@ import {BlogListComponent} from "./blog/blog-list.component";
 import {MarkdownModule} from "ngx-markdown";
 import {BlogContentComponent} from "./blog/blog-content.component";
 import {RouterModule} from "@angular/router";
+import {SayingListComponent} from "./saying/saying-list.component";
+import {MyMaterialModule} from "../common/my-material.module";
 
 @NgModule({
   declarations:[
     HomeComponent,
-    HomeMainComponent,
     BlogComponent,
     BlogListComponent,
-    BlogContentComponent
+    BlogContentComponent,
+    SayingListComponent
   ],
   imports:[
     CommonModule,
     FormsModule,
-    MatDatepickerModule,
-    MatMomentDateModule,
+    MyMaterialModule,
     PaginationModule,
     MarkdownModule.forChild(),
     RouterModule

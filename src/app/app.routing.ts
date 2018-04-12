@@ -4,7 +4,6 @@ import {HomeComponent} from "./home/home.component";
 import {AdminComponent} from "./admin/admin.component";
 import {LoginComponent} from "./login/login.component";
 import {PageNotFoundComponent} from "./common/page-not-found.component";
-import {HomeMainComponent} from "./home/home-main.component";
 import {ProfileComponent} from "./user/profile.component";
 import {AdminMainComponent} from "./admin/admin-main.component";
 import {AdminBlogComponent} from "./admin/admin-blog.component";
@@ -16,10 +15,10 @@ import {AdminBookComponent} from "./admin/admin-book.component";
 import {AdminBookArticleComponent} from "./admin/admin-book-article.component";
 import {AdminContentComponent} from "./admin/admin-content.component";
 import {AuthGuard} from "./auth-guard.service";
-import {AuthService} from "./auth.service";
 import {BlogComponent} from "./home/blog/blog.component";
 import {BlogListComponent} from "./home/blog/blog-list.component";
 import {BlogContentComponent} from "./home/blog/blog-content.component";
+import {SayingListComponent} from "./home/saying/saying-list.component";
 
 const routes:Routes = [
   {path:'home',component:HomeComponent},
@@ -27,7 +26,7 @@ const routes:Routes = [
   {path:'blog/list/:categoryId',component:BlogListComponent,children:[
     {path:"content/:contentId",component:BlogContentComponent}
   ]},
-  {path:'main/:type',component:HomeMainComponent},
+  {path:"saying",component:SayingListComponent},
   {path:'login',component:LoginComponent},
   {path:'profile',component:ProfileComponent},
 
@@ -54,7 +53,7 @@ const routes:Routes = [
 ];
 
 @NgModule({
-  imports:[RouterModule.forRoot(routes,{onSameUrlNavigation:"reload"})],
+  imports:[RouterModule.forRoot(routes)],
   exports:[RouterModule],
   providers:[]
 })

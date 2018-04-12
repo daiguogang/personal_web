@@ -19,14 +19,10 @@ export class BlogListComponent implements OnInit {
   constructor(private paramMessage: BlogParamMessageService,
               private router:Router,
               private call: CallService,
-              public changeDetectorRef:ChangeDetectorRef,
               private activeRoute:ActivatedRoute) {}
 
   ngOnInit() {
-    debugger;
-    // this.router.onSameUrlNavigation = "reload";
-    // this.changeDetectorRef.detectChanges();
-    // this.categoryId = this.activeRoute.snapshot.params["categoryId"];
+
     this.activeRoute.params.subscribe(params => {this.categoryId = params.categoryId;});
     this.contentId = this.paramMessage.data ? this.paramMessage.data.contentId : undefined;
     this.path = "blog/list/"+this.categoryId+"/content";
@@ -46,13 +42,6 @@ export class BlogListComponent implements OnInit {
 
   }
 
-  onDetail(item) {
-    // this.changeDetectorRef.markForCheck();
-    debugger;
-
-    this.router.navigate([this.path,item.contentId]);
-    // this.router.onSameUrlNavigation="reload";
-  }
 
 
 }
