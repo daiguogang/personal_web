@@ -21,6 +21,7 @@ export class BlogComponent implements OnInit {
   pageNumber: number;
 
   categoryList:any;
+  saying:any = {content:"",originAuthor:""};
 
   blogList= [];
 
@@ -46,7 +47,18 @@ export class BlogComponent implements OnInit {
       (val) => {
         this.categoryList = val.data;
       });
+    // 随机查询1条名言
+    this.call.callService("/front/sayingList",
+      {
+        "isPoem":0,
+        "isDisabled":0,
+        "count":1
+      },
+      (val) => {
+        this.saying = val.data[0];
+      });
   }
+
 
   getCategoryName(value:number):string {
     const tempItem = this.categoryList.find((item => item.categoryId === value));

@@ -31,9 +31,9 @@ export class DateCustomPipe implements PipeTransform {
       result = diffWeek + "周前";
     } else if (diffDay > 1) {
       result = diffDay + "天前";
-    } else if (diffHour > 1) {
+    } else if (diffHour >= 1) {
       result = diffHour + "小时前";
-    } else if (diffMinute > 1) {
+    } else if (diffMinute > 1 && diffMinute <= 59) {
       result = diffMinute + "分钟前";
     } else {
       result = "刚刚发表";

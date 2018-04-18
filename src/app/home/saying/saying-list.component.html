@@ -2,20 +2,122 @@
 
 
 
-<div class="row web-content">
+<div class="row web-content1">
 
-  <div class="col-lg-12 bg-success">
+  <div class="col-lg-12">
 
-    <h1>满屏随机显示20条或15条。中间给一个刷新和新增按钮</h1>
-    <button mat-raised-button (click)="onAdd()">新增</button>
-    <button mat-raised-button (click)="onRefresh()">刷新</button>
-    <div>
-      <ul>
-        <li *ngFor="let item of sayingList">{{item.content}}</li>
-      </ul>
+    <div class="main-content">
+
+      <div class="saying-list">
+        <ul class="list-unstyled">
+          <li *ngFor="let item of sayingList">
+            <div class="li-saying-content">
+              <span>{{item.content}}</span>
+            </div>
+            <div class="li-saying-footer">
+              <span>提供者：{{item.provider}}</span>
+              <span class="ml-3">原作者：{{item.originAuthor}}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="saying-button">
+        <button mat-raised-button (click)="onOpenAddModal(template)"><i class="fa fa-plus mr-1"></i><span>试一试</span></button>
+        <button mat-raised-button (click)="onRefresh()"><i class="fa fa-refresh mr-1"></i><span>换一换</span></button>
+      </div>
+    </div>
+
+    <div class="web-footer web-footer-ext">
+      <div class="web-footer-content">
+        <div><span>Copyright&nbsp;&copy;&nbsp;2018&nbsp;-&nbsp;2018&nbsp;&nbsp;Dylan.All Rights Reserved.</span></div>
+        <div><span>Powered by Dylan. Email:m.ydy@foxmail.com</span></div>
+      </div>
+
     </div>
 
   </div>
 </div>
+
+<ng-template #template>
+  <div class="">
+    <div class="modal-header">
+      <h5 class="modal-title pull-left">新增一条名言</h5>
+      <button mat-icon-button class="pull-right" (click)="onDecline()" color="accent">
+        <span><i class="fa fa-close"></i></span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #sayingFrontForm="ngForm">
+        <div class="form-custom">
+          <div class="form-custom-label"><span>内容</span><span class="fa fa-question-circle-o web-question"></span></div>
+          <div class="form-custom-content">
+            <textarea class="form-custom-width" rows="4"
+                      placeholder="请在此处添加内容"
+                      name="content"
+                      required
+                      [(ngModel)]="content" #saying_content="ngModel"></textarea>
+          </div>
+          <div *ngIf="saying_content.invalid && (saying_content.dirty || saying_content.touched)"
+               class="alert alert-danger custom-alert custom-alert2">
+            <div *ngIf="saying_content.errors.required">内容是必填项</div>
+          </div>
+        </div>
+
+
+        <div class="form-custom">
+          <div class="form-custom-label"><span>原作者</span></div>
+          <div class="form-custom-content">
+            <input class="form-custom-width" type="text"
+                   placeholder="请在此处添加原创作者，如杜甫，如果不清楚来源，请填未知"
+                   name="originAuthor"
+                   required
+                   [(ngModel)]="originAuthor" #origin_author="ngModel">
+          </div>
+          <div *ngIf="origin_author.invalid && (origin_author.dirty || origin_author.touched)"
+               class="alert alert-danger custom-alert custom-alert2">
+            <div *ngIf="origin_author.errors.required">作者是必填项</div>
+          </div>
+        </div>
+
+        <div class="form-custom">
+          <div class="form-custom-label"><span>提供者</span></div>
+          <div class="form-custom-content">
+            <input class="form-custom-width" type="text"
+                   placeholder="请在此处填写你的网名，或者昵称，或者邮箱"
+                   name="provider"
+                   [(ngModel)]="provider">
+          </div>
+        </div>
+
+        <div class="form-custom">
+          <div class="form-custom-label">
+            <span>是否是诗词</span>
+            <span><mat-slide-toggle color="primary" (change)="onPoemChange($event)"></mat-slide-toggle></span>
+          </div>
+        </div>
+
+        <div class="form-custom pb-0">
+          <div class="form-custom-label">
+            <span>是否是外文</span>
+            <span class="form-custom-span"><mat-slide-toggle color="primary" (change)="onAlienChange($event)"></mat-slide-toggle></span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <div class="">
+        <button mat-raised-button color="primary"
+                [disabled]="!sayingFrontForm.form.valid"
+                (click)="onConfirm()">
+          <i class="fa fa-save mr-1"></i><span>提交</span>
+        </button>
+        <button mat-raised-button color="primary" (click)="onDecline()">
+          <i class="fa fa-close mr-1"></i><span>取消</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</ng-template>
 
 
