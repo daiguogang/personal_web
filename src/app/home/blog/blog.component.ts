@@ -12,9 +12,15 @@ export class BlogComponent implements OnInit {
 
   isBlog:number;
 
-  totalItems:number;
-  currentPage:number;
-  pageSize:number;
+  // totalItems:number;
+  // currentPage:number;
+  // pageSize:number;
+  pageTotal:number;
+  pageSize = 10;
+  pageSizeOptions = [5, 10, 25];
+  pageNumber: number;
+
+  categoryList:any;
 
   blogList= [];
 
@@ -25,27 +31,44 @@ export class BlogComponent implements OnInit {
 
   ngOnInit() {
     this.isBlog = 1;// 1 是 0 否
-    this.pageSize = 10;
-    this.currentPage = 1;
+    // this.pageSize = 10;
+    // this.currentPage = 1;
+
+    this.initData();
 
     this.queryPageList();
   }
 
-  onPageChanged(event: any) {
-    this.currentPage = event.page;
+  initData() {
+
+    // type 1位技术博客类的分类
+    this.call.callService("/front/categoryList",{"type":1},
+      (val) => {
+        this.categoryList = val.data;
+      });
+  }
+
+  getCategoryName(value:number):string {
+    const tempItem = this.categoryList.find((item => item.categoryId === value));
+    return tempItem.categoryName;
+  }
+
+  onPageChange(pageEvent: any) {
+    this.pageNumber = pageEvent.pageIndex + 1;
+    this.pageSize = pageEvent.pageSize;
     this.queryPageList();
   }
 
   queryPageList() {
     this.call.callService("/front/blogPageList",
       {
-        "currentPage":this.currentPage,
+        "currentPage": this.pageNumber,
         "pageSize":this.pageSize,
         "isBlog":this.isBlog,
         "isPublic":1
       },
       (val) => {
-        this.totalItems = val.data.total;
+        this.pageTotal = val.data.total;
         this.blogList = val.data.records;
       });
   }

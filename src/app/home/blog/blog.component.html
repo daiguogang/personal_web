@@ -2,10 +2,33 @@
 
 <div class="row web-content1">
 
-  <div class="col-lg-9">
-    <div class="row main-left-list bg-danger">
+  <div class="col-lg-12">
+    <div class="row main-left-list">
       <div class="main-content">
+        <div class="main-saying">
+          <div class="main-saying-content li-content-head"><span>莎士比亚说：To be or not to be. That's a question</span></div>
+          <div class="main-saying-author"><span>——</span><span>author</span></div>
+        </div>
         <ul class="list-unstyled content-ul">
+          <!--<li *ngFor="let item of blogList">-->
+            <!--<div class="li-content-head">-->
+              <!--<a class="head-a"-->
+                 <!--(click)="onDetail(item)">{{item.contentTitle}}</a>-->
+            <!--</div>-->
+            <!--<div class="li-content-desc">-->
+              <!--<p>{{item.contentDesc}}</p>-->
+            <!--</div>-->
+            <!--<div class="li-content-footer row">-->
+              <!--<div class="col-lg-8"></div>-->
+              <!--<div class="col-lg-4 footer-span">-->
+                <!--<span><i class="fa fa-calendar-check-o"></i>{{item.updateTime | date:'yyyy-MM-dd HH:mm'}}</span>-->
+                <!--<span><i class="fa fa-eye"></i>12312</span>-->
+                <!--<span><i class="fa fa-heart"></i>12123</span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</li>-->
+
           <li *ngFor="let item of blogList">
             <div class="li-content-head">
               <a class="head-a"
@@ -15,90 +38,106 @@
               <p>{{item.contentDesc}}</p>
             </div>
             <div class="li-content-footer row">
-              <div class="col-lg-8"></div>
-              <div class="col-lg-4 footer-span">
-                <span><i class="fa fa-calendar-check-o"></i>{{item.updateTime | date:'yyyy-MM-dd HH:mm'}}</span>
-                <span><i class="fa fa-eye"></i>12312</span>
-                <span><i class="fa fa-heart"></i>12123</span>
+              <div class="col-lg-8">
+                <span><i class="fa fa-calendar-check-o"></i>&nbsp;{{item.updateTime | dateCustom}}</span>
+                <span class="ml-3"><i class="fa fa-tags"></i>分类：<a>{{getCategoryName(item.categoryId)}}</a></span>
+              </div>
+              <div class="col-lg-4 li-footer-custom">
+
+                <span><i class="fa fa-eye"></i>&nbsp;12312</span>
+                <span class="ml-3"><i class="fa fa-heart"></i>&nbsp;12123</span>
               </div>
 
             </div>
           </li>
 
         </ul>
-        <div class="col-xs-12 col-12">
-          <div class="pull-right">
-            <pagination class="pagination"
-                        [totalItems]="totalItems"
-                        [(ngModel)]="currentPage"
-                        [itemsPerPage]="pageSize"
-                        [boundaryLinks]="true"
-                        [rotate]="true"
-                        (pageChanged)="onPageChanged($event)">
-            </pagination>
+        <div class="main-paginator">
+          <div class="main-paginator-content">
+            <!--<pagination class="pagination"-->
+                        <!--[totalItems]="totalItems"-->
+                        <!--[(ngModel)]="currentPage"-->
+                        <!--[itemsPerPage]="pageSize"-->
+                        <!--[boundaryLinks]="true"-->
+                        <!--[rotate]="true"-->
+                        <!--(pageChanged)="onPageChanged($event)">-->
+            <!--</pagination>-->
+            <mat-paginator [length]="pageTotal"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPageChange($event)">
+            </mat-paginator>
           </div>
         </div>
       </div>
 
+      <div class="web-footer">
+        <div class="web-footer-content">
+          <div><span>Copyright&nbsp;&copy;&nbsp;2018&nbsp;-&nbsp;2018&nbsp;&nbsp;Dylan.All Rights Reserved.</span></div>
+          <div><span>Powered by Dylan. Email:m.ydy@foxmail.com</span></div>
+        </div>
+
+      </div>
+
 
     </div>
   </div>
 
-  <div class="col-lg-3">
-    <div class="row main-right main-right-daily bg-success">
-      <div>每日一句</div>
-      <div class="daily-content">
-        <span>
-          生如夏花之绚烂，死如秋叶之静美.
-          生如夏花之绚烂，死如秋叶之静美.
-          生如夏花之绚烂，死如秋叶之静美.
-        </span>
-      </div>
-      <div class="daily-author">
-        <span>——泰戈尔</span>
-      </div>
-    </div>
+  <!--<div class="col-lg-3">-->
+    <!--<div class="row main-right main-right-daily bg-success">-->
+      <!--<div>每日一句</div>-->
+      <!--<div class="daily-content">-->
+        <!--<span>-->
+          <!--生如夏花之绚烂，死如秋叶之静美.-->
+          <!--生如夏花之绚烂，死如秋叶之静美.-->
+          <!--生如夏花之绚烂，死如秋叶之静美.-->
+        <!--</span>-->
+      <!--</div>-->
+      <!--<div class="daily-author">-->
+        <!--<span>——泰戈尔</span>-->
+      <!--</div>-->
+    <!--</div>-->
 
-    <div class="row main-right">
-      <input type="text" placeholder="搜索关键字">
-      <a mat-icon-button=""><i class="fa fa-search"></i></a>
-    </div>
+    <!--<div class="row main-right">-->
+      <!--<input type="text" placeholder="搜索关键字">-->
+      <!--<a mat-icon-button=""><i class="fa fa-search"></i></a>-->
+    <!--</div>-->
 
-    <div class="row main-right main-right-rank bg-info">
-      <div>分类列表</div>
-      <div>
-        <ul class="list-unstyled">
-          <li><span>1</span><span>学而时习之</span></li>
-          <li><span>2</span><span>学而时习之</span></li>
-          <li><span>3</span><span>学而时习之</span></li>
-          <li><span>4</span><span>学而时习之</span></li>
-          <li><span>5</span><span>学而时习之</span></li>
-          <li><span>6</span><span>学而时习之</span></li>
-          <li><span>7</span><span>学而时习之</span></li>
-          <li><span>8</span><span>学而时习之</span></li>
-          <li><span>9</span><span>学而时习之</span></li>
-          <li><span>10</span><span>学而时习之</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="row main-right main-right-rank bg-success">
-      <div>访问TOP</div>
-      <div>
-        <ul class="list-unstyled">
-          <li><span>1</span><span>学而时习之</span></li>
-          <li><span>2</span><span>学而时习之</span></li>
-          <li><span>3</span><span>学而时习之</span></li>
-          <li><span>4</span><span>学而时习之</span></li>
-          <li><span>5</span><span>学而时习之</span></li>
-          <li><span>6</span><span>学而时习之</span></li>
-          <li><span>7</span><span>学而时习之</span></li>
-          <li><span>8</span><span>学而时习之</span></li>
-          <li><span>9</span><span>学而时习之</span></li>
-          <li><span>10</span><span>学而时习之</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    <!--<div class="row main-right main-right-rank bg-info">-->
+      <!--<div>分类列表</div>-->
+      <!--<div>-->
+        <!--<ul class="list-unstyled">-->
+          <!--<li><span>1</span><span>学而时习之</span></li>-->
+          <!--<li><span>2</span><span>学而时习之</span></li>-->
+          <!--<li><span>3</span><span>学而时习之</span></li>-->
+          <!--<li><span>4</span><span>学而时习之</span></li>-->
+          <!--<li><span>5</span><span>学而时习之</span></li>-->
+          <!--<li><span>6</span><span>学而时习之</span></li>-->
+          <!--<li><span>7</span><span>学而时习之</span></li>-->
+          <!--<li><span>8</span><span>学而时习之</span></li>-->
+          <!--<li><span>9</span><span>学而时习之</span></li>-->
+          <!--<li><span>10</span><span>学而时习之</span></li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row main-right main-right-rank bg-success">-->
+      <!--<div>访问TOP</div>-->
+      <!--<div>-->
+        <!--<ul class="list-unstyled">-->
+          <!--<li><span>1</span><span>学而时习之</span></li>-->
+          <!--<li><span>2</span><span>学而时习之</span></li>-->
+          <!--<li><span>3</span><span>学而时习之</span></li>-->
+          <!--<li><span>4</span><span>学而时习之</span></li>-->
+          <!--<li><span>5</span><span>学而时习之</span></li>-->
+          <!--<li><span>6</span><span>学而时习之</span></li>-->
+          <!--<li><span>7</span><span>学而时习之</span></li>-->
+          <!--<li><span>8</span><span>学而时习之</span></li>-->
+          <!--<li><span>9</span><span>学而时习之</span></li>-->
+          <!--<li><span>10</span><span>学而时习之</span></li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
 
 </div>

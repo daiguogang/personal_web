@@ -11,9 +11,11 @@ import {BlogContentComponent} from "./blog/blog-content.component";
 import {RouterModule} from "@angular/router";
 import {SayingListComponent} from "./saying/saying-list.component";
 import {MyMaterialModule} from "../common/my-material.module";
+import {DateCustomPipe} from "../admin/pipe/date-custom.pipe";
 
 @NgModule({
   declarations:[
+    DateCustomPipe,
     HomeComponent,
     BlogComponent,
     BlogListComponent,

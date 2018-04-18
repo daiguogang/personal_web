@@ -8,6 +8,7 @@
 }
 .font-css{
   font-size: 1.2em;
+  color: #333;
 }
 .web-nav{
   position: fixed;
@@ -16,14 +17,27 @@
   left: 0;
   z-index: 10;
   height: 5em;
+  background: #fff;
+  border-bottom: 1px solid #ebebeb;
+  box-shadow: 0 0 5px #888;
+
 }
 .web-nav-menu{
   position: fixed;
   right: 20px;
+  color: #333;
 }
+
+.active-link {
+  border-bottom: 1px solid #0069d9;
+}
+
 
 a:hover{
   cursor: pointer;
 }
+a:link,a:visited{color:#444;text-decoration:none;}
+a:hover{color:#5F6364;}
+
 
 

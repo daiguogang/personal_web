@@ -1,28 +1,37 @@
 
 
 <div class="row web-content1">
-  <div class="col-lg-3 bg-info">
-    <div>time</div>
-    <div>search</div>
-    <div>
-      <div>
-        <ul>
-          <li *ngFor="let item of blogList"
-              routerLinkActive="active">
-            <a routerLink="./content/{{item.contentId}}">{{item.contentTitle}}</a>
-          </li>
-        </ul>
+  <div class="col-lg-12">
+    <div class="row main-left-list">
+      <div class="main-content">
+
+        <router-outlet></router-outlet>
+
+      </div>
+
+      <div class="main-content">
+        <div class="relate-blog-head"><span>相关博文:</span></div>
+        <div class="relate-blog-list">
+          <ul class="list-unstyled">
+            <li *ngFor="let item of blogList"
+                routerLinkActive="active-link">
+              <a routerLink="./content/{{item.contentId}}">{{item.contentTitle}}</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="web-footer">
+        <div class="web-footer-content">
+          <div><span>Copyright&nbsp;&copy;&nbsp;2018&nbsp;-&nbsp;2018&nbsp;&nbsp;Dylan.All Rights Reserved.</span></div>
+          <div><span>Powered by Dylan. Email:m.ydy@foxmail.com</span></div>
+        </div>
+
       </div>
     </div>
   </div>
-  <div class="col-lg-9 bg-success">
-
-    <router-outlet></router-outlet>
-
-  </div>
-</div>
-
-<hr class="divider" />
-<div class="row web-footer">
 
 </div>
+
+
