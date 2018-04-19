@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {HomeComponent} from "./home.component";
 import {CommonModule} from "@angular/common";
-import {PaginationConfig, PaginationModule} from "ngx-bootstrap";
+import {PaginationConfig, PaginationModule, TooltipModule} from "ngx-bootstrap";
 import {FormsModule} from "@angular/forms";
 import {CustomPaginationConfig} from "../common/ngx-bootstrap/custom-pagination.config";
 import {BlogComponent} from "./blog/blog.component";
@@ -28,6 +28,7 @@ import {DateCustomPipe} from "../admin/pipe/date-custom.pipe";
     MyMaterialModule,
     PaginationModule,
     MarkdownModule.forChild(),
+    TooltipModule.forRoot(),
     RouterModule
   ],
   exports:[],

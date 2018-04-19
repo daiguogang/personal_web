@@ -20,7 +20,7 @@ export class BlogComponent implements OnInit {
   pageSizeOptions = [5, 10, 25];
   pageNumber: number;
 
-  categoryList:any;
+  categoryList =[];
   saying:any = {content:"",originAuthor:""};
 
   blogList= [];
@@ -55,7 +55,9 @@ export class BlogComponent implements OnInit {
         "count":1
       },
       (val) => {
-        this.saying = val.data[0];
+        if(val.data.length > 0) {
+          this.saying = val.data[0];
+        }
       });
   }
 

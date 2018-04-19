@@ -49,7 +49,13 @@
     <div class="modal-body">
       <form #sayingFrontForm="ngForm">
         <div class="form-custom">
-          <div class="form-custom-label"><span>内容</span><span class="fa fa-question-circle-o web-question"></span></div>
+          <div class="form-custom-label">
+            <span>内容</span>
+            <i class="fa fa-question-circle-o web-question" [tooltip] = "tolTemplate" placement="left"></i>
+          </div>
+          <ng-template #tolTemplate>
+              为了保证本站内容的质量,你提交的信息,经过审核后方可显示,为此给您带来的不便,敬请谅解
+          </ng-template>
           <div class="form-custom-content">
             <textarea class="form-custom-width" rows="4"
                       placeholder="请在此处添加内容"

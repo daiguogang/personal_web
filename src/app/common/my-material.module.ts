@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {
   MAT_DATE_LOCALE,
   MatButtonModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorIntl,
-  MatPaginatorModule, MatSlideToggleModule, MatTooltipModule
+  MatPaginatorModule, MatSlideToggleModule, MatSnackBarModule, MatTooltipModule
 } from "@angular/material";
 import {MyMaterialPagination} from "./my-material-pagination";
 
@@ -15,7 +15,8 @@ import {MyMaterialPagination} from "./my-material-pagination";
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule
   ],
   exports:[
     MatButtonModule,
@@ -25,7 +26,8 @@ import {MyMaterialPagination} from "./my-material-pagination";
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule
   ],
   providers:[
     {provide:MatPaginatorIntl,useClass:MyMaterialPagination},

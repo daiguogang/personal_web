@@ -1,6 +1,8 @@
 import {Component, OnInit, TemplateRef} from "@angular/core";
 import {CallService} from "../../common/service/call.service";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {MatSnackBar} from "@angular/material";
+
 
 @Component({
   templateUrl:'./saying-list.component.html',
@@ -24,6 +26,7 @@ export class SayingListComponent implements OnInit {
   isAlien = 0;
 
   constructor(private modalService: BsModalService,
+              private snackBar:MatSnackBar,
               private call:CallService) {}
 
   ngOnInit() {
@@ -32,12 +35,12 @@ export class SayingListComponent implements OnInit {
   }
 
   querySayingList() {
-    // 随机查询最多15条数据
+    // 随机查询最多5条数据
     this.call.callService("/front/sayingList",
       {
         "isPoem":0,
         "isDisabled":0,
-        "count":15
+        "count":5
       },
       (val) => {
         this.sayingList = val.data;
@@ -60,11 +63,32 @@ export class SayingListComponent implements OnInit {
         "isPoem": this.isPoem,
         "isAlien":this.isAlien
       },
-      () => {
+      (val) => {
         // 清空表单数据
         this.cleanForm();
-        // TODO 提示保存成功 modal
+
+        let flag = val.success;
+        // 弹出Modal
+        let message,className;
+        if(flag) {
+          message = "保存成功";
+          className = "notice-bg-success";
+        }else {
+          message = "保存失败，请联系管理员";
+          className = "notice-bg-danger";
+        }
+        this.openSnackBar(message, className);
       });
+  }
+
+  openSnackBar(msg,className) {
+    this.snackBar.open(msg,"",
+      {
+        duration:2000,
+        panelClass:className,
+        verticalPosition:"top"
+      }
+    );
   }
 
   onDecline(): void {
@@ -76,6 +100,7 @@ export class SayingListComponent implements OnInit {
   cleanForm() {
     this.content = "";
     this.originAuthor = "";
+    this.provider = "";
     this.isPoem = 0;
     this.isAlien = 0;
   }

@@ -311,12 +311,10 @@ hr.divider {
 }
 
 .web-question{
+  display: block;
   font-size: 1.8em;
-  color: red;
 }
-.web-question:hover{
-  cursor: help;
-}
+
 
 .ng-valid[required], .ng-valid.required  {
   border-left: 2px solid #42A948; /* green */
@@ -325,3 +323,4 @@ hr.divider {
 .ng-invalid:not(form)  {
   border-left: 2px solid #a94442; /* red */
 }
+
