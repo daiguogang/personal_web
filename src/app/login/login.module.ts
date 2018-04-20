@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {LoginComponent} from "./login.component";
 import {FormsModule} from "@angular/forms";
+import {MyMaterialModule} from "../common/my-material.module";
 
 @NgModule({
   declarations:[
@@ -9,7 +10,8 @@ import {FormsModule} from "@angular/forms";
   ],
   imports:[
     CommonModule,
-    FormsModule
+    FormsModule,
+    MyMaterialModule
   ],
   exports:[],
   providers:[]

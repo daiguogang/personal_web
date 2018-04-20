@@ -1,0 +1,12 @@
+
+
+.common-content{
+  height:100%;
+  position: relative;
+  z-index:20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fbfbfb;
+  border-bottom: solid 1px #ddd;
+}

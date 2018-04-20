@@ -13,12 +13,56 @@
   height:100%;
   position: relative;
   z-index:20;
-  text-align: center;
+  /*text-align: center;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-bottom: 8em;
   background-color: #fbfbfb;
   border-bottom: solid 1px #ddd;
 }
 
+
 .login-content{
-  margin: 10em auto;
+  width: 25em;
+  height: 30em;
+}
+
+.login-content-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.login-content-container > *{
+  width: 100%;
+}
+
+input, textarea ,select.select-control{
+  box-shadow: none;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+input, textarea, select ,select.select-control{
+  font-size: 1em;
+  display: inline-block;
+  padding: 4px;
+  height: 1.5em !important;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 0.25rem;
+  margin: 0;
+}
+
+input:focus,
+textarea:focus ,select.select-control:focus{
+  border-color: #ffffff;
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+  box-shadow: none;
+}
+
+.form-field-custom{
+  margin-top: 1em;
 }

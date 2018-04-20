@@ -15,7 +15,10 @@ export class BlogContentComponent implements OnInit {
   updateTime:any;
   views:number;
   like:number;
+  unlike:number;
 
+  isLike = false;
+  isUnlike = false;
 
   constructor(private activeRoute:ActivatedRoute,
               private call:CallService) {}
@@ -23,6 +26,8 @@ export class BlogContentComponent implements OnInit {
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
       this.contentId = params.contentId;
+      this.isLike = false;
+      this.isUnlike = false;
       this.getBlogContent();
     });
 
@@ -39,7 +44,33 @@ export class BlogContentComponent implements OnInit {
         this.updateTime = val.data.updateTime;
         this.views = val.data.views;
         this.like = val.data.like;
+        this.unlike = val.data.unlike;
       });
   }
+
+  onLikeClick() {
+    this.isLike = true;
+    this.call.callService("/front/blogCountUpdate",
+      {
+        "contentId":this.contentId,
+        "like":this.like+1
+      },
+      () => {
+
+      });
+  }
+
+  onUnlikeClick() {
+    this.isUnlike = true;
+    this.call.callService("/front/blogCountUpdate",
+      {
+        "contentId":this.contentId,
+        "unlike":this.unlike+1
+      },
+      () => {
+
+      });
+  }
+
 
 }

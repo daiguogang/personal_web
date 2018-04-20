@@ -14,3 +14,26 @@
   padding-right: 10em;
 
 }
+
+.web-footer{
+  margin-top: 2em;
+  margin-bottom: 3em;
+  border-top: 1px solid #ebebeb;
+  /*box-shadow: 0 0 4px #888;*/
+  /*height: 20%;*/
+}
+.web-footer-ext{
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.web-footer-content{
+  margin-top: 1em;
+  padding-left: 10em;
+  padding-right: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+

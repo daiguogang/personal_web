@@ -16,8 +16,8 @@
   </div>
   <div class="detail-footer">
     <div class="footer-custom">
-      <a mat-icon-button class="icon-size2"><i class="fa fa-heart-o"></i></a>
-      <a mat-icon-button class="icon-size2 ml-3"><i class="fa fa-thumbs-o-down"></i></a>
+      <a mat-icon-button (click)="onLikeClick()" [disabled]="isLike"  class="icon-size2"><i class="fa fa-heart-o"></i></a>
+      <a mat-icon-button (click)="onUnlikeClick()" [disabled]="isUnlike" class="icon-size2 ml-3"><i class="fa fa-thumbs-o-down"></i></a>
     </div>
   </div>
 </div>
