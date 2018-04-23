@@ -3,7 +3,7 @@
   position: relative;
   /*z-index:20;*/
   text-align: center;
-  padding-bottom: 8em;
+  /*padding-bottom: 8em;*/
   /*background-color: #fbfbfb;*/
   border-bottom: solid 1px #ddd;
 }
@@ -12,36 +12,42 @@
 
 
 .home-content-brand {
-  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   width: 100%;
-  top: 200px;
-  min-height: 200px;
+
 }
 
 .home-content-first{
   display: block;
-  margin-right: 10em;
-  height: 20em;
+  margin-right: 7em;
+  font-size: 2em;
   writing-mode: tb-rl;
 }
-.home-content-first-span{
-  display: block;
-  font-size: 2em;
 
-}
-.home-content-first,.home-content-first-span:hover{
+.home-content-first:hover{
   cursor: default;
 }
+.poem-p{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
 
-/*.scroll-down-div {*/
-  /*position: absolute;*/
-  /*bottom: 0;*/
-  /*width: 100%;*/
-  /*color: #4d4d4d;;*/
-  /*!*cursor: pointer;*!*/
-  /*height: 32px;*/
-  /*font-size: 18px;*/
-/*}*/
+@media screen and (max-width:768px){
+  .home-content-first{
+    margin-right: 1em;
+  }
+  .poem-p{
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+
+
 
 .home-content{
   height:90%;
@@ -105,20 +111,20 @@ hr.divider {
   display: block;
 }
 
-.main-content{
-  /*padding: 1.2em;*/
-  padding-left: 10em;
-  padding-right: 10em;
+/*.main-content{*/
+  /*!*padding: 1.2em;*!*/
+  /*!*padding-left: 10em;*!*/
+  /*!*padding-right: 10em;*!*/
 
-}
-.web-footer-content{
-  margin-top: 1em;
-  padding-left: 10em;
-  padding-right: 10em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/*}*/
+/*.web-footer-content{*/
+  /*margin-top: 1em;*/
+  /*padding-left: 10em;*/
+  /*padding-right: 10em;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+/*}*/
 
 .content-ul li{
   /*border-bottom: 0.1em dashed #d3d3d3;*/
@@ -223,6 +229,11 @@ hr.divider {
 /*.footer-custom{*/
   /*margin: 0 auto;*/
 /*}*/
+
+.saying-content-custom{
+  padding-left: 0;
+  padding-right: 0;
+}
 
 .main-saying{
   margin-top: 2em;

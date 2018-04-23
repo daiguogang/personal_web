@@ -14,16 +14,13 @@ import {MyMaterialModule} from "../common/my-material.module";
 import {FormsModule} from "@angular/forms";
 import {BsDatepickerModule, ModalModule} from "ngx-bootstrap";
 import {CallService} from "../common/service/call.service";
-import {IsDisablePipe} from "./pipe/is-disable.pipe";
-import {StatusPipe} from "./pipe/status.pipe";
 import {MarkdownModule} from "ngx-markdown";
 import {AdminContentComponent} from "./admin-content.component";
+import {CustomPipeModule} from "../common/pipe/custom-pipe.module";
 
 
 @NgModule({
   declarations:[
-    IsDisablePipe,
-    StatusPipe,
     AdminComponent,
     AdminMainComponent,
     AdminBlogComponent,
@@ -40,6 +37,7 @@ import {AdminContentComponent} from "./admin-content.component";
     FormsModule,
     RouterModule,
     MyMaterialModule,
+    CustomPipeModule,
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     MarkdownModule.forChild()

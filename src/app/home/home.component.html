@@ -1,12 +1,13 @@
 
 <section class="row home-main ">
   <div class="home-content-brand">
-    <!--<h2>this is a title</h2>-->
-    <!--<p class="slogon">/* <span class="typed-quotes">a minimal markdown editor</span> */-->
-    <!--</p>-->
 
-    <div class="home-content-first pull-right"><span class="home-content-first-span">{{poemText}}</span></div>
-
+    <div class="home-content-first">
+      <!--<span class="home-content-first-span">{{poemText}}</span>-->
+      <ng-container *ngFor="let item of poemText">
+        <p class="poem-p">{{item}}</p>
+      </ng-container>
+    </div>
 
   </div>
 </section>
@@ -14,7 +15,7 @@
 
 <section class="row home-content">
   <div class="home-content-header">
-    <h3 class="home-content-h3">身体和灵魂，总要有一个在路上</h3>
+    <h3 class="home-content-h3">开源项目模块正在准备中</h3>
   </div>
   <div class="home-content-content">
 
@@ -24,7 +25,7 @@
 
 <section class="row home-content">
   <div class="home-content-header">
-    <h3 class="home-content-h3">好看的皮囊千篇一律，有趣的灵魂万里挑一</h3>
+    <h3 class="home-content-h3">文字模块正在准备中</h3>
   </div>
   <div class="home-content-content"></div>
 </section>

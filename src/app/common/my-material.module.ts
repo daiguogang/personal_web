@@ -3,7 +3,7 @@ import {
   MAT_DATE_LOCALE,
   MatButtonModule, MatCardModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule,
   MatPaginatorIntl,
-  MatPaginatorModule, MatSlideToggleModule, MatSnackBarModule, MatTooltipModule
+  MatPaginatorModule, MatSlideToggleModule, MatSnackBarModule, MatTabsModule, MatTooltipModule
 } from "@angular/material";
 import {MyMaterialPagination} from "./my-material-pagination";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -20,7 +20,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatSlideToggleModule,
     MatSnackBarModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule
   ],
   exports:[
     MatButtonModule,
@@ -33,7 +34,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatSlideToggleModule,
     MatSnackBarModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule
   ],
   providers:[
     {provide:MatPaginatorIntl,useClass:MyMaterialPagination},

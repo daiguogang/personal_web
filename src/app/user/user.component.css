@@ -9,11 +9,6 @@
 
 }
 
-.user-main-content{
-  padding-left: 10em;
-  padding-right: 10em;
-
-}
 
 .web-footer{
   margin-top: 2em;
@@ -27,13 +22,18 @@
   margin-right: -15px;
 }
 
-.web-footer-content{
-  margin-top: 1em;
-  padding-left: 10em;
-  padding-right: 10em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/*.web-footer-content{*/
+  /*margin-top: 1em;*/
+  /*padding-left: 10em;*/
+  /*padding-right: 10em;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+/*}*/
+
+.custom-tab-content{
+  font-size: 1.5em;
+  min-height: 25em;
 }
 
 

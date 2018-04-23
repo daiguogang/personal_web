@@ -11,11 +11,10 @@ import {BlogContentComponent} from "./blog/blog-content.component";
 import {RouterModule} from "@angular/router";
 import {SayingListComponent} from "./saying/saying-list.component";
 import {MyMaterialModule} from "../common/my-material.module";
-import {DateCustomPipe} from "../admin/pipe/date-custom.pipe";
+import {CustomPipeModule} from "../common/pipe/custom-pipe.module";
 
 @NgModule({
   declarations:[
-    DateCustomPipe,
     HomeComponent,
     BlogComponent,
     BlogListComponent,
@@ -27,6 +26,7 @@ import {DateCustomPipe} from "../admin/pipe/date-custom.pipe";
     FormsModule,
     MyMaterialModule,
     PaginationModule,
+    CustomPipeModule,
     MarkdownModule.forChild(),
     TooltipModule.forRoot(),
     RouterModule

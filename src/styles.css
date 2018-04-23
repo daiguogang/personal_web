@@ -114,3 +114,32 @@ textarea{
   border-color: #f5c6cb !important;
 }
 
+@media screen and (min-width:768px){
+  .main-content{
+    padding-left: 10em;
+    padding-right: 10em;
+  }
+  .web-footer-content{
+    margin-top: 1em;
+    padding-left: 10em;
+    padding-right: 10em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 768px){
+  .main-content{
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .web-footer-content{
+    margin-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
