@@ -12,18 +12,19 @@ body {font-family: Arial, sans-serif;font-size: 62.5%}
 
 .block-quote {
   /*color:#868e96;*/
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   /*border-left: 10px solid #5236a0;*/
   border-right: 2px solid #5236a0;
   box-shadow: -1px 0px 0px 0px #5236a0, 0px 0px 0px 1px #dfdfdf;
   padding: 1em 1.5em 1em 1.5em;
   position: relative;
   font-family: 'Open Sans', sans-serif;
+  font-style: italic;
   line-height: 150%;
   text-indent: 35px;
 }
 .block-quote:before {
-  color: #392570;
+  color: #ebebeb;
   content: "\201C";
   font-size: 3em;
   position:absolute;
@@ -32,7 +33,7 @@ body {font-family: Arial, sans-serif;font-size: 62.5%}
   line-height: 0.1em;
 }
 .block-quote:after {
-  color: #392570;
+  color: #ebebeb;
   content: "\201D";
   font-size: 3em;
   position:absolute;

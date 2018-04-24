@@ -25,9 +25,12 @@
 
         <li class="nav-item ml-5 nav-item-empty"></li>
 
+        <!--
         <li *ngIf="!isLogged" class="nav-item">
           <a class="nav-link" routerLink="/login">登录</a>
         </li>
+        -->
+
         <li *ngIf="isLogged" class="nav-item" routerLinkActive="active-link">
           <a class="nav-link" routerLink="/admin">管理</a>
         </li>
